@@ -977,7 +977,7 @@ body::-webkit-scrollbar-track{
     }
 
     .side-bar .bar{
-        transition-duration: 0.1s;
+        transition-duration: 0s;
     }
 }
 
