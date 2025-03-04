@@ -69,7 +69,7 @@ view.addEventListener('click', () => {
 // *************************************
 
 allElements.forEach(element => {
-    if(window.innerWidth > 540) {
+    if (window.innerWidth > 540) {
         element.addEventListener('mouseenter', () => {
             element.classList.add('bg-circle')
         })
@@ -169,7 +169,6 @@ function removeSideBarBg() {
 }
 
 sideBar.addEventListener('click', (e) => {
-
     e.stopPropagation()
 })
 
@@ -641,12 +640,12 @@ const backGround = (index, cardType, event) => {
     <p class="color peach" data-color="Peach"></p>
     <p class="color coral" data-color="Coral"></p>
     `
-    
+
     let rect = currentCard.getBoundingClientRect()
     let leftPosition = rect.left + window.scrollX - 90
-    let topPosition = rect.bottom + window.scrollY 
-    
-    if(currentCard.classList.contains('selected-card')) topPosition = topPosition - 45
+    let topPosition = rect.bottom + window.scrollY
+
+    if (currentCard.classList.contains('selected-card')) topPosition = topPosition - 45
 
     let screenWidth = window.innerWidth
     let bgCardWidth = 450
@@ -654,12 +653,12 @@ const backGround = (index, cardType, event) => {
     if (leftPosition + bgCardWidth > screenWidth) {
         leftPosition = rect.right - bgCardWidth;
     }
-  
+
     if (leftPosition < 100) {
         leftPosition = rect.left - 2;
     }
 
-    if(screenWidth < 450) {
+    if (screenWidth < 450) {
         leftPosition = 2
         bgCardWidth = screenWidth - 4;
     }
@@ -800,7 +799,7 @@ const remind = (cardIndex, cardType, event) => {
     let leftPosition = rect.left + window.scrollX
     let topPosition = rect.bottom + window.scrollY
 
-    if(window.innerHeight - rect.bottom < 180) {
+    if (window.innerHeight - rect.bottom < 180) {
         topPosition = topPosition - 180
     }
 
@@ -973,23 +972,15 @@ notesBar.onclick = () => {
     renderNotes()
     lastClickedBarClass = '.notes-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
-    if(window.innerWidth < 542) {
-        toggleSidebar()
-        removeSideBarBg()
-    }
 }
 
-remindersBar.onclick = () => { 
+remindersBar.onclick = () => {
     removeBarBg()
     remindersBar.classList.add('active-bar')
     newCardContainer.style.display = 'none'
     lastClickedBarClass = '.reminders-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
     showAllReminders()
-    if(window.innerWidth < 542) {
-        toggleSidebar()
-        removeSideBarBg()
-    }
 }
 
 archiveBar.onclick = () => {
@@ -999,10 +990,6 @@ archiveBar.onclick = () => {
     renderArchive()
     lastClickedBarClass = '.archive-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
-    if(window.innerWidth < 542) {
-        toggleSidebar()
-        removeSideBarBg()
-    }
 }
 
 binBar.onclick = () => {
@@ -1012,10 +999,6 @@ binBar.onclick = () => {
     renderDeleted()
     lastClickedBarClass = '.bin-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
-    if(window.innerWidth < 542) {
-        toggleSidebar()
-        removeSideBarBg()
-    }
 }
 // *************
 
@@ -1140,7 +1123,7 @@ function viewCard(index, cardType) {
 
     disableBgEl.classList.add('active')
     body.style.overflow = 'hidden'
-    
+
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`)
 
     completed.addEventListener('click', (e) => {
