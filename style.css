@@ -225,10 +225,11 @@ body::-webkit-scrollbar-track{
     flex-direction: column;
     position: fixed;
     left: 0;
-    top: 62px;
+    top: 60px;
     height: 100vh;
     background-color: var(--background-color);
     z-index: 5;
+    touch-action: none;
 }
 
 .side-bar .bar{
@@ -975,6 +976,9 @@ body::-webkit-scrollbar-track{
         top: calc(var(--scroll-y) - 228px);
     }
 
+    .side-bar .bar{
+        transition-duration: 0.1s;
+    }
 }
 
 @media (max-width: 434px) {
