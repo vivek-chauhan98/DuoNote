@@ -69,12 +69,14 @@ view.addEventListener('click', () => {
 // *************************************
 
 allElements.forEach(element => {
-    element.addEventListener('mouseenter', () => {
-        element.classList.add('bg-circle')
-    })
-    element.addEventListener('mouseleave', () => {
-        element.classList.remove('bg-circle')
-    })
+    if(window.innerWidth > 540) {
+        element.addEventListener('mouseenter', () => {
+            element.classList.add('bg-circle')
+        })
+        element.addEventListener('mouseleave', () => {
+            element.classList.remove('bg-circle')
+        })
+    }
 })
 
 let darkMode = JSON.parse(localStorage.getItem('darkMode')) || false
@@ -127,6 +129,7 @@ const toggleSidebar = () => {
 }
 
 menu.addEventListener('click', (e) => {
+    isSideBarOpen ? removeSideBarBg() : applySideBarBg()
     e.stopPropagation()
     toggleSidebar()
     isSideBarOpen = !isSideBarOpen
@@ -138,20 +141,42 @@ sideBar.addEventListener('mouseenter', () => {
     bgCard.classList.remove('active')
     if (!isSideBarOpen) toggleSidebar()
     isSideBarOpen = true
+    applySideBarBg()
 })
 
 sideBar.addEventListener('mouseleave', () => {
     toggleSidebar()
     isSideBarOpen = false
+    removeSideBarBg()
 })
 
+function applySideBarBg() {
+    allIcons.forEach(icon => {
+        if (icon.classList.contains('active-bar')) {
+            icon.parentElement.classList.add('active-bar')
+            icon.classList.remove('active-bar')
+        }
+    })
+}
+
+function removeSideBarBg() {
+    allBars.forEach(bar => {
+        if (bar.classList.contains('active-bar')) {
+            bar.children[0].classList.add('active-bar')
+        }
+    })
+    removeBarBg()
+}
+
 sideBar.addEventListener('click', (e) => {
+
     e.stopPropagation()
 })
 
 document.addEventListener('click', () => {
     if (isSideBarOpen) toggleSidebar()
     isSideBarOpen = false
+    removeSideBarBg()
 })
 
 
@@ -949,15 +974,17 @@ notesBar.onclick = () => {
     renderNotes()
     lastClickedBarClass = '.notes-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
+    if(window.innerWidth < 542) toggleSidebar()
 }
 
-remindersBar.onclick = () => {
+remindersBar.onclick = () => { 
     removeBarBg()
     remindersBar.classList.add('active-bar')
     newCardContainer.style.display = 'none'
     lastClickedBarClass = '.reminders-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
     showAllReminders()
+    if(window.innerWidth < 542) toggleSidebar()
 }
 
 archiveBar.onclick = () => {
@@ -967,6 +994,7 @@ archiveBar.onclick = () => {
     renderArchive()
     lastClickedBarClass = '.archive-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
+    if(window.innerWidth < 542) toggleSidebar()
 }
 
 binBar.onclick = () => {
@@ -976,27 +1004,8 @@ binBar.onclick = () => {
     renderDeleted()
     lastClickedBarClass = '.bin-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
+    if(window.innerWidth < 542) toggleSidebar()
 }
-// *************
-
-
-sideBar.addEventListener('mouseleave', () => {
-    allBars.forEach(bar => {
-        if (bar.classList.contains('active-bar')) {
-            bar.children[0].classList.add('active-bar')
-        }
-    })
-    removeBarBg()
-})
-
-sideBar.addEventListener('mouseenter', () => {
-    allIcons.forEach(icon => {
-        if (icon.classList.contains('active-bar')) {
-            icon.parentElement.classList.add('active-bar')
-            icon.classList.remove('active-bar')
-        }
-    })
-})
 // *************
 
 const activateBar = (barClass) => {
@@ -1072,6 +1081,8 @@ searchBack.addEventListener('click', () => {
     searchIcon2.style.display = 'flex'
     appName.style.display = 'block'
     logo.style.display = 'block'
+    searchInput.value = ''
+    searchCard()
 })
 
 
@@ -1169,4 +1180,3 @@ function updateCorrespondingCard(updatedCard) {
         renderArchive();
     }
 }
-
