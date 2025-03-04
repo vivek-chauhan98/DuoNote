@@ -294,7 +294,6 @@ function showAllReminders() {
 }
 
 
-
 function renderDeleted() {
     container.innerHTML = '';
     for (let index = deleted.length - 1; index >= 0; index--) {
@@ -974,7 +973,10 @@ notesBar.onclick = () => {
     renderNotes()
     lastClickedBarClass = '.notes-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
-    if(window.innerWidth < 542) toggleSidebar()
+    if(window.innerWidth < 542) {
+        toggleSidebar()
+        removeSideBarBg()
+    }
 }
 
 remindersBar.onclick = () => { 
@@ -984,7 +986,10 @@ remindersBar.onclick = () => {
     lastClickedBarClass = '.reminders-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
     showAllReminders()
-    if(window.innerWidth < 542) toggleSidebar()
+    if(window.innerWidth < 542) {
+        toggleSidebar()
+        removeSideBarBg()
+    }
 }
 
 archiveBar.onclick = () => {
@@ -994,7 +999,10 @@ archiveBar.onclick = () => {
     renderArchive()
     lastClickedBarClass = '.archive-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
-    if(window.innerWidth < 542) toggleSidebar()
+    if(window.innerWidth < 542) {
+        toggleSidebar()
+        removeSideBarBg()
+    }
 }
 
 binBar.onclick = () => {
@@ -1004,7 +1012,10 @@ binBar.onclick = () => {
     renderDeleted()
     lastClickedBarClass = '.bin-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
-    if(window.innerWidth < 542) toggleSidebar()
+    if(window.innerWidth < 542) {
+        toggleSidebar()
+        removeSideBarBg()
+    }
 }
 // *************
 
