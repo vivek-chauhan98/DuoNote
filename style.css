@@ -229,7 +229,6 @@ body::-webkit-scrollbar-track{
     height: 100vh;
     background-color: var(--background-color);
     z-index: 5;
-    touch-action: none;
 }
 
 .side-bar .bar{
@@ -978,6 +977,10 @@ body::-webkit-scrollbar-track{
 
     .side-bar .bar{
         transition-duration: 0.1s;
+    }
+
+    .side-bar .bar:hover{
+        background-color: transparent;
     }
 
     .note-card .options,
