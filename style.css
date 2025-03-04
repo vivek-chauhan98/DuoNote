@@ -234,7 +234,7 @@ body::-webkit-scrollbar-track{
 
 .side-bar .bar{
     padding-left: 16px;
-    transition-duration: 0s;
+    transition-duration: 0.3s;
     text-decoration: none;
     color: var(--color-text);
 }
@@ -252,7 +252,7 @@ body::-webkit-scrollbar-track{
     display: flex;
     justify-content: center;
     align-items: center;
-    transition-duration: 0s;
+    transition-duration: 0.5s;
 }
 
 .side-bar span{
@@ -265,7 +265,7 @@ body::-webkit-scrollbar-track{
 
 .side-bar .active-bar,
 .side-bar .active-bar:hover{
-    transition-duration: 0s;
+    transition-duration: 0.5s;
     background-color: var(--side-bar-active-clr);
 }
 
@@ -309,7 +309,7 @@ body::-webkit-scrollbar-track{
     overflow: hidden;
     cursor: default;
     transition: box-shadow 0.3s ease;
-    transition-duration: 0;
+    transition-duration: 0.3s;
     margin-inline: auto;
 }
 
@@ -639,7 +639,7 @@ body::-webkit-scrollbar-track{
     top: calc(var(--scroll-y) - 170px);
     transform: translateX(-50%);
     cursor: auto;
-    transition-duration: 0s;
+    transition-duration: 0.3s;
     background-color: var(--background-color);
     padding: 4px 0px 42px 8px;
 }
@@ -977,8 +977,16 @@ body::-webkit-scrollbar-track{
     }
 
     .side-bar .bar{
-        transition-duration: 0s;
+        transition-duration: 0.1s;
     }
+
+    .note-card .options,
+    .archive-card .options,
+    .deleted-card .options,
+    .reminder-card .options{
+        opacity: 1;
+    }
+
 }
 
 @media (max-width: 434px) {
