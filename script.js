@@ -88,9 +88,9 @@ mode.addEventListener('click', () => {
 
 
 function applyDarkMode() {
-    if(darkMode == false) {
+    if (darkMode == false) {
         body.classList.remove('dark-mode')
-    } else if(darkMode == true) {
+    } else if (darkMode == true) {
         body.classList.add('dark-mode')
     }
     changeCorrespondColor()
@@ -99,11 +99,11 @@ function applyDarkMode() {
 
 let isSideBarOpen = false;
 const toggleSidebar = () => {
-    
+
     sideBar.style.boxShadow = isSideBarOpen ? 'none' : '10px 0px 12px -12px rgba(0, 0, 0, 0.5)'
 
-    if(window.innerWidth < 434) {
-        if(!isSideBarOpen) {
+    if (window.innerWidth < 434) {
+        if (!isSideBarOpen) {
             sideBar.style.left = '0%'
         } else {
             sideBar.style.left = '-20%'
@@ -366,7 +366,6 @@ function setupNoteCard() {
         contentBox.style.display = openContentBox ? 'block' : 'none'
         doneBtn.style.display = openDoneBtn ? 'block' : 'none'
         closeBtn.style.display = openClosebtn ? 'block' : 'none'
-        newCardContainer.style.width = isTextNote ? '90vw' : '70vw'
         startRecording.style.display = openRcrdBtn ? 'block' : 'none'
         closeBtn2.style.display = openClosebtn2 ? 'block' : 'none'
     }
@@ -386,7 +385,6 @@ function setupNoteCard() {
         contentBox.style.display = 'none'
         doneBtn.style.display = 'none'
         closeBtn.style.display = 'none'
-        newCardContainer.style.width = '50vw'
         newCardCopy.style.boxShadow = 'none'
         title.style.display = 'none'
         if (myTitle == '' && myContent == '') return
@@ -414,7 +412,6 @@ function setupNoteCard() {
     function resetNewCard() {
         textBtn.style.display = 'block'
         buttonBox.style.display = 'flex'
-        newCardContainer.style.width = '50vw'
         newCardCopy.style.boxShadow = 'none'
         title.style.display = 'none'
         contentBox.value = ''
@@ -462,7 +459,6 @@ function setupNoteCard() {
         buttonBox.style.display = 'flex'
         textBtn.style.display = 'block'
         closeBtn2.style.display = 'none'
-        newCardContainer.style.width = '50vw'
         newCardCopy.style.boxShadow = 'none'
     })
 }
@@ -478,7 +474,7 @@ function deleteCard(index, cardType) {
     let card = list[index]
     deleted.push(card)
     list.splice(index, 1)
-    if(cardType == 'reminders') deleteCorrespondingCard(card)
+    if (cardType == 'reminders') deleteCorrespondingCard(card)
     localStorage.setItem('notes', JSON.stringify(notes))
     localStorage.setItem('reminders', JSON.stringify(reminders))
     localStorage.setItem('archive', JSON.stringify(archived))
@@ -494,14 +490,14 @@ function deleteCard(index, cardType) {
 function deleteCorrespondingCard(deletedCard) {
 
     notes.forEach((noteCard, index) => {
-        if(noteCard.id == deletedCard.id)
-            notes.splice(index,1)
+        if (noteCard.id == deletedCard.id)
+            notes.splice(index, 1)
         localStorage.setItem('notes', JSON.stringify(notes))
     })
 
     archived.forEach((archiveCard, index) => {
-        if(archiveCard.id == deletedCard.id)
-            archived.splice(index,1)
+        if (archiveCard.id == deletedCard.id)
+            archived.splice(index, 1)
         localStorage.setItem('archive', JSON.stringify(archived))
     })
 }
@@ -621,10 +617,32 @@ const backGround = (index, cardType, event) => {
     <p class="color peach" data-color="Peach"></p>
     <p class="color coral" data-color="Coral"></p>
     `
-
+    
     let rect = currentCard.getBoundingClientRect()
-    bgCard.style.left = `${rect.left + window.scrollX - 90}px`
-    bgCard.style.top = `${rect.bottom + window.scrollY}px`
+    let leftPosition = rect.left + window.scrollX - 90
+    let topPosition = rect.bottom + window.scrollY 
+    
+    if(currentCard.classList.contains('selected-card')) topPosition = topPosition - 45
+
+    let screenWidth = window.innerWidth
+    let bgCardWidth = 450
+
+    if (leftPosition + bgCardWidth > screenWidth) {
+        leftPosition = rect.right - bgCardWidth;
+    }
+  
+    if (leftPosition < 100) {
+        leftPosition = rect.left - 2;
+    }
+
+    if(screenWidth < 450) {
+        leftPosition = 2
+        bgCardWidth = screenWidth - 4;
+    }
+
+    bgCard.style.width = `${bgCardWidth}px`
+    bgCard.style.left = `${leftPosition}px`;
+    bgCard.style.top = `${topPosition}px`;
 
     bgCard.classList.toggle('active')
     remindCard.classList.remove('active')
@@ -691,29 +709,29 @@ function changeCorrespondColor() {
         ['rgb(250, 175, 168)', 'rgb(119, 23, 46)'],
     ]
 
-    allBars.forEach(bar => {      
+    allBars.forEach(bar => {
         bar.forEach(card => {
-            for(let [light, dark] of colorPairs) {
-                if(card.color == light && darkMode == true) {
-                    card.color = dark                    
-                } else if(card.color == dark && darkMode == false) {
-                    card.color = light                    
+            for (let [light, dark] of colorPairs) {
+                if (card.color == light && darkMode == true) {
+                    card.color = dark
+                } else if (card.color == dark && darkMode == false) {
+                    card.color = light
                 }
             }
         })
     })
 
 
-    if(lastClickedBarClass == '.notes-bar') {
+    if (lastClickedBarClass == '.notes-bar') {
         localStorage.setItem('notes', JSON.stringify(list))
-        renderNotes() 
-    } else  if(lastClickedBarClass == '.reminders-bar') {
+        renderNotes()
+    } else if (lastClickedBarClass == '.reminders-bar') {
         localStorage.setItem('reminders', JSON.stringify(list))
         showAllReminders()
-    } else if(lastClickedBarClass == '.archive-bar') {
+    } else if (lastClickedBarClass == '.archive-bar') {
         localStorage.setItem('archive', JSON.stringify(list))
         renderArchive()
-    } else if(lastClickedBarClass == '.bin-bar') {
+    } else if (lastClickedBarClass == '.bin-bar') {
         localStorage.setItem('deleted', JSON.stringify(list))
         renderDeleted()
     }
@@ -755,8 +773,15 @@ const remind = (cardIndex, cardType, event) => {
     body.remindCard = remindCard
 
     let rect = remindIcon.getBoundingClientRect()
-    remindCard.style.left = `${rect.left + window.scrollX}px`
-    remindCard.style.top = `${rect.bottom + window.scrollY}px`
+    let leftPosition = rect.left + window.scrollX
+    let topPosition = rect.bottom + window.scrollY
+
+    if(window.innerHeight - rect.bottom < 180) {
+        topPosition = topPosition - 180
+    }
+
+    remindCard.style.left = `${leftPosition}px`
+    remindCard.style.top = `${topPosition}px`
 
     remindCard.onclick = (e) => {
         e.stopPropagation()
@@ -855,9 +880,9 @@ function addImage(event) {
     reader.onload = () => {
         let imageUrl = reader.result
         addImgCardType[addImgIndex].imageUrl = imageUrl
-        if(myCardType == 'notes') applyBgImgToRem(addImgIndex, imageUrl)
-        if(myCardType == 'reminders') applyCorrepondBgImg(addImgIndex, imageUrl)
-        if(myCardType == 'archive') applyBgImgToRem(addImgIndex, imageUrl)
+        if (myCardType == 'notes') applyBgImgToRem(addImgIndex, imageUrl)
+        if (myCardType == 'reminders') applyCorrepondBgImg(addImgIndex, imageUrl)
+        if (myCardType == 'archive') applyBgImgToRem(addImgIndex, imageUrl)
 
         localStorage.setItem('notes', JSON.stringify(notes))
         localStorage.setItem('archive', JSON.stringify(archived))
@@ -876,12 +901,12 @@ function applyBgImg(card, imageUrl) {
 
 function applyCorrepondBgImg(index, imageUrl) {
     notes.forEach((noteCard) => {
-        if(noteCard.id == reminders[index].id) {
+        if (noteCard.id == reminders[index].id) {
             noteCard.imageUrl = imageUrl
         }
     })
     archived.forEach((archiveCard) => {
-        if(archiveCard.id == reminders[index].id) {
+        if (archiveCard.id == reminders[index].id) {
             archiveCard.imageUrl = imageUrl
         }
     })
@@ -889,7 +914,7 @@ function applyCorrepondBgImg(index, imageUrl) {
 
 function applyBgImgToRem(index, imageUrl) {
     reminders.forEach(remCard => {
-        if(remCard.id == notes[index]?.id || remCard.id == archived[index]?.id) {
+        if (remCard.id == notes[index]?.id || remCard.id == archived[index]?.id) {
             remCard.imageUrl = imageUrl
         }
     })
@@ -1051,13 +1076,13 @@ searchBack.addEventListener('click', () => {
 
 
 window.addEventListener('resize', () => {
-    if(window.innerWidth > 542) {
+    if (window.innerWidth > 542) {
         navCenter.style.display = 'flex'
         navCenter.style.width = '47%'
         searchBack.style.display = 'none'
         searchIcon2.style.display = 'none'
-        
-    } else if(window.innerWidth < 542) {
+
+    } else if (window.innerWidth < 542) {
         navCenter.style.display = 'none'
         navCenter.style.width = '75%'
         searchIcon.style.display = 'flex'
@@ -1066,17 +1091,16 @@ window.addEventListener('resize', () => {
         logo.style.display = 'block'
     }
 
-    if(window.innerWidth > 434) {
+    if (window.innerWidth > 434) {
         sideBar.style.left = '0%'
     } else {
         sideBar.style.left = '-20%'
-        if(isSideBarOpen) sideBar.style.left = '0%'
+        if (isSideBarOpen) sideBar.style.left = '0%'
     }
 })
 
 
 // **********************
-
 
 function viewCard(index, cardType) {
     let currentCards;
@@ -1086,8 +1110,6 @@ function viewCard(index, cardType) {
     const selectedCard = container.children[currentCards.length - index - 1]
     selectedCard.classList.add('selected-card')
 
-    cardType == 'notes' ? selectedCard.style.top = 50 + window.scrollY + 'px' : selectedCard.style.top = 210 + window.scrollY + 'px'
-
     const completed = selectedCard.querySelector('.completed')
     completed.style.display = 'block'
 
@@ -1096,7 +1118,8 @@ function viewCard(index, cardType) {
 
     disableBgEl.classList.add('active')
     body.style.overflow = 'hidden'
-
+    
+    document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`)
 
     completed.addEventListener('click', (e) => {
         e.stopPropagation();
