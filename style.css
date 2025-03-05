@@ -975,10 +975,6 @@ body::-webkit-scrollbar-track{
         top: calc(var(--scroll-y) - 228px);
     }
 
-    .side-bar .bar{
-        transition-duration: 0.1s;
-    }
-
     .side-bar .bar:hover{
         background-color: transparent;
     }
