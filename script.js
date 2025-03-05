@@ -69,14 +69,12 @@ view.addEventListener('click', () => {
 // *************************************
 
 allElements.forEach(element => {
-    if (window.innerWidth > 540) {
         element.addEventListener('mouseenter', () => {
             element.classList.add('bg-circle')
         })
         element.addEventListener('mouseleave', () => {
             element.classList.remove('bg-circle')
-        })
-    }
+        })    
 })
 
 let darkMode = JSON.parse(localStorage.getItem('darkMode')) || false
@@ -1145,6 +1143,7 @@ function viewCard(index, cardType) {
     disableBgEl.classList.add('active')
     body.style.overflow = 'hidden'
 
+    
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`)
 
     completed.addEventListener('click', (e) => {
