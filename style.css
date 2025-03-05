@@ -239,7 +239,7 @@ body::-webkit-scrollbar-track{
 }
 
 .side-bar .bar:hover{
-    background-color: var(--side-bar-hover);
+    background-color: var(--side-bar-hover);    
 }
 
 .side-bar .icon{  
@@ -635,12 +635,19 @@ body::-webkit-scrollbar-track{
     max-height: fit-content;
     z-index: 20;
     left: 50%;
-    top: calc(var(--scroll-y) - 170px);
     transform: translateX(-50%);
     cursor: auto;
     transition-duration: 0.3s;
     background-color: var(--background-color);
     padding: 4px 0px 42px 8px;
+}
+
+.container .note-card.selected-card{
+    top: calc(var(--scroll-y) - 170px);
+}
+
+.container .reminder-card.selected-card{
+    top: calc(var(--scroll-y) - 56px);
 }
 
 .container .selected-card {
@@ -892,8 +899,12 @@ body::-webkit-scrollbar-track{
         margin-top: 25%;
     }
 
-    .container .selected-card{
-        top: calc(var(--scroll-y) - 310px);
+    .container .note-card.selected-card{
+        top: calc(var(--scroll-y) - 300px);
+    }
+    
+    .container .reminder-card.selected-card{
+        top: calc(var(--scroll-y) - 184px);
     }
 }
 
@@ -923,8 +934,12 @@ body::-webkit-scrollbar-track{
         max-width: 81.5%;
     }
 
-    .container .selected-card {
-        top: calc(var(--scroll-y) - 240px);
+    .container .note-card.selected-card{
+        top: calc(var(--scroll-y) - 293px);
+    }
+    
+    .container .reminder-card.selected-card{
+        top: calc(var(--scroll-y) - 179px);
     }
 }
 
@@ -970,14 +985,10 @@ body::-webkit-scrollbar-track{
         margin-left: 7%;
         width: 330px;
     }
-
-    .container .selected-card {
-        top: calc(var(--scroll-y) - 228px);
-    }
-
+    
     .side-bar .bar,
     .side-bar .bar:hover{
-        transition-duration: 0.1s;
+        transition-duration: 0.2s;
         background-color: transparent;
     }
 
@@ -1040,8 +1051,8 @@ body::-webkit-scrollbar-track{
         margin-left: 22%;
     }
 
-    .container .selected-card{
-        top: calc(var(--scroll-y) - 350px);
+    .container .note-card.selected-card {
+        top: calc(var(--scroll-y) - 365px);
     }
 
 }
