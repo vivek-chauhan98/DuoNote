@@ -640,20 +640,15 @@ body::-webkit-scrollbar-track{
     transition-duration: 0.3s;
     background-color: var(--background-color);
     padding: 4px 0px 42px 8px;
+    width: 620px;
+    max-width: 100%;
+    top: calc(var(--scroll-y) - 56px);
 }
 
 .container .note-card.selected-card{
     top: calc(var(--scroll-y) - 170px);
 }
 
-.container .reminder-card.selected-card{
-    top: calc(var(--scroll-y) - 56px);
-}
-
-.container .selected-card {
-    width: 620px;
-    max-width: 100%;
-}
 
 .container .selected-card .main-content{
     max-height: 75vh;
@@ -896,15 +891,11 @@ body::-webkit-scrollbar-track{
     }
 
     .container .selected-card{
-        margin-top: 25%;
+        top: calc(var(--scroll-y) - 78px);
     }
 
     .container .note-card.selected-card{
-        top: calc(var(--scroll-y) - 300px);
-    }
-    
-    .container .reminder-card.selected-card{
-        top: calc(var(--scroll-y) - 184px);
+        top: calc(var(--scroll-y) - 190px);
     }
 }
 
@@ -932,14 +923,6 @@ body::-webkit-scrollbar-track{
     .new-card{
         margin-left: 16%;
         max-width: 81.5%;
-    }
-
-    .container .note-card.selected-card{
-        top: calc(var(--scroll-y) - 293px);
-    }
-    
-    .container .reminder-card.selected-card{
-        top: calc(var(--scroll-y) - 179px);
     }
 }
 
@@ -1052,7 +1035,7 @@ body::-webkit-scrollbar-track{
     }
 
     .container .note-card.selected-card {
-        top: calc(var(--scroll-y) - 365px);
+        top: calc(var(--scroll-y) - 267px);
     }
 
 }
