@@ -975,9 +975,17 @@ body::-webkit-scrollbar-track{
         top: calc(var(--scroll-y) - 228px);
     }
 
+    .side-bar .bar,
     .side-bar .bar:hover{
+        transition-duration: 0.1s;
         background-color: transparent;
     }
+
+    .side-bar .active-bar,
+    .side-bar .active-bar:hover{
+        background-color: var(--side-bar-active-clr);
+    }
+
 
     .note-card .options,
     .archive-card .options,
