@@ -112,6 +112,7 @@ body::-webkit-scrollbar-track{
     display: flex;
     justify-content: center;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .nav-left .element i{
@@ -216,6 +217,7 @@ body::-webkit-scrollbar-track{
     justify-content: center;
     align-items: center;
     margin-block: 8px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* ************************************ */
@@ -236,6 +238,7 @@ body::-webkit-scrollbar-track{
     transition-duration: 0.3s;
     text-decoration: none;
     color: var(--color-text);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .side-bar .bar:hover{
@@ -351,7 +354,7 @@ body::-webkit-scrollbar-track{
 .archive-card .content,
 .deleted-card .content,
 .reminder-card .content{
-    margin-bottom: 16px;
+    margin-bottom: 28px;
     font-size: 14px;
     overflow: hidden;
     outline: none;
@@ -489,7 +492,7 @@ body::-webkit-scrollbar-track{
 }
 
 .date-tag{
-    margin-top: 16px;
+    margin-top: 10px;
     max-width: fit-content;
     border-radius: 12px;;
     padding: 2px 8px;
@@ -651,7 +654,7 @@ body::-webkit-scrollbar-track{
 
 
 .container .selected-card .main-content{
-    max-height: 75vh;
+    max-height: 74vh;
     padding-right: 4px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -897,6 +900,10 @@ body::-webkit-scrollbar-track{
     .container .note-card.selected-card{
         top: calc(var(--scroll-y) - 190px);
     }
+
+    .color-label{
+        display: none;
+    }
 }
 
 @media (max-width: 664px) {
@@ -927,7 +934,6 @@ body::-webkit-scrollbar-track{
 }
 
 @media (max-width: 543px) {
-
     .container{
         max-width: 75%;
     }
@@ -953,6 +959,7 @@ body::-webkit-scrollbar-track{
         border-radius: 50%;
         justify-content: center;
         align-items: center;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .search-back{
@@ -979,7 +986,6 @@ body::-webkit-scrollbar-track{
     .side-bar .active-bar:hover{
         background-color: var(--side-bar-active-clr);
     }
-
 
     .note-card .options,
     .archive-card .options,
@@ -1021,7 +1027,21 @@ body::-webkit-scrollbar-track{
     .nav-bar{
         padding-inline: 0;
     }
+    
+    .container .selected-card {
+        top: calc(var(--scroll-y) - 95px);
+        max-width: 105%;
+        border-radius: 0;
+        min-height: 100vh;
+    }
+    
+    .container .note-card.selected-card {
+        top: calc(var(--scroll-y) - 210px);
+    }
 
+    .container .selected-card .main-content{
+        max-height: 90vh;
+    }
 }
 
 @media (max-width: 415px) {
@@ -1035,7 +1055,7 @@ body::-webkit-scrollbar-track{
     }
 
     .container .note-card.selected-card {
-        top: calc(var(--scroll-y) - 267px);
+        top: calc(var(--scroll-y) - 284px);
     }
 
 }
@@ -1048,6 +1068,15 @@ body::-webkit-scrollbar-track{
 }
 
 @media (max-width: 362px) {
+    
+    .container .selected-card {
+        top: calc(var(--scroll-y) - 107px);
+    }
+    
+    .container .note-card.selected-card {
+        top: calc(var(--scroll-y) - 289px);
+    }
+
     .button-box{
         margin-left: 17%;
     }
