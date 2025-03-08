@@ -646,7 +646,7 @@ const backGround = (index, cardType, event) => {
     if (currentCard.classList.contains('selected-card')) topPosition = topPosition - 45
 
     let screenWidth = window.innerWidth
-    let bgCardWidth = 450
+    let bgCardWidth = 440
 
     if (leftPosition + bgCardWidth > screenWidth) {
         leftPosition = rect.right - bgCardWidth;
@@ -672,7 +672,6 @@ const backGround = (index, cardType, event) => {
     const allColors = bgCard.querySelectorAll('.color')
 
     allColors.forEach(color => {
-
         color.addEventListener('mouseenter', () => {
             const colorLabel = document.createElement('p')
             colorLabel.className = 'color-label'
