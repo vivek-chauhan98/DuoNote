@@ -1036,7 +1036,7 @@ body::-webkit-scrollbar-track{
     }
     
     .container .note-card.selected-card {
-        top: calc(var(--scroll-y) - 210px);
+        top: calc(var(--scroll-y) - 209px);
     }
 
     .container .selected-card .main-content{
