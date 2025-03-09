@@ -871,19 +871,25 @@ body::-webkit-scrollbar-track{
     }
 
     .new-card{
-        margin-left: 20%;
+        margin-left: 22%;
     }
 }
 
 @media (max-width: 854px) {
     .container{
-        grid-template-columns: repeat(2, 240px);
-        margin-left: 22%;
+        grid-template-columns: repeat(2, 1fr);
+        margin-left: 13%;
         gap: 32px;
+        max-width: 85%;
     }
 
-    .container.flex-view, .new-card{
-        margin-left: 17%;
+    .container.flex-view{
+        margin-left: 13%;
+        max-width: 85%;
+    }
+
+    .new-card{
+        margin-left: 19%;
     }
 
     .button-box{
@@ -905,45 +911,6 @@ body::-webkit-scrollbar-track{
 }
 
 @media (max-width: 664px) {
-    .view{
-        display: none;
-    }
-
-    .container, .container.flex-view{
-        display: flex;
-        flex-direction: column;
-        max-width: 74%;
-        margin-left: 18%;
-    }
-
-    .flex-view{
-        min-width: 0px;
-    }
-
-    .button-box{
-        margin-left: 12%;
-        width: 360px;
-    }
-
-    .nav-left, .nav-right{
-        gap: 10px;
-    }
-
-    .new-card{
-        margin-left: 16%;
-        max-width: 81.5%;
-    }
-
-}
-
-@media (max-width: 543px) {
-    .container{
-        max-width: 98%;
-    }
-
-    .container, .container.flex-view{
-        margin-left: 1%;
-    }
 
     .nav-center{
         display: none;
@@ -978,6 +945,42 @@ body::-webkit-scrollbar-track{
         margin-inline: 24px;
     }
 
+    .container{
+        grid-template-columns: repeat(2,1fr);
+        margin-left: 1%;
+        max-width: 98%;
+        gap: 8px;
+    }
+
+    .container.flex-view{
+        display: flex;
+        flex-direction: column;
+        max-width: 98%;
+        margin-left: 1%;
+    }
+
+    .flex-view{
+        min-width: 0px;
+    }
+
+    .button-box{
+        margin-left: 12%;
+        width: 360px;
+    }
+
+    .nav-left, .nav-right{
+        gap: 10px;
+    }
+
+    .new-card{
+        margin-left: 12%;
+        max-width: 81.5%;
+    }
+
+}
+
+@media (max-width: 543px) {
+
     .button-box{
         margin-left: 0%;
         width: 330px;
@@ -1008,24 +1011,17 @@ body::-webkit-scrollbar-track{
         margin-bottom: 8px;
         width: 60%;
     }
-
+    
     .completed{
         bottom: 1.5%;
     }
-
     
     .nav-bar{
         padding-inline: 0;
     }
-
 }
 
 @media (max-width: 434px) {
-
-    .container, .container.flex-view{
-        margin-left: 2%;
-        max-width: 96%;
-    }
 
     .button-box{
         width: 310px;
