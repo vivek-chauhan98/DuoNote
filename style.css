@@ -938,7 +938,11 @@ body::-webkit-scrollbar-track{
 
 @media (max-width: 543px) {
     .container{
-        max-width: 75%;
+        max-width: 98%;
+    }
+
+    .container, .container.flex-view{
+        margin-left: 1%;
     }
 
     .nav-center{
@@ -975,7 +979,7 @@ body::-webkit-scrollbar-track{
     }
 
     .button-box{
-        margin-left: 7%;
+        margin-left: 0%;
         width: 330px;
     }
     
@@ -995,7 +999,22 @@ body::-webkit-scrollbar-track{
     .deleted-card .options,
     .reminder-card .options{
         opacity: 1;
-        margin-bottom: 4px;
+    }
+
+    .note-card.selected-card .options,
+    .archive-card.selected-card .options,
+    .deleted-card.selected-card .options,
+    .reminder-card.selected-card .options{
+        margin-bottom: 8px;
+    }
+
+    .completed{
+        bottom: 1.5%;
+    }
+
+    
+    .nav-bar{
+        padding-inline: 0;
     }
 
 }
@@ -1008,8 +1027,8 @@ body::-webkit-scrollbar-track{
     }
 
     .button-box{
-        width: 300px;
-        margin-left: 10%;
+        width: 310px;
+        margin-left: 11%;
     }
 
     .new-card{
@@ -1026,17 +1045,13 @@ body::-webkit-scrollbar-track{
     .side-bar{
         left: -20%;
     }
-
-    .nav-bar{
-        padding-inline: 0;
-    }
     
     .container .selected-card {
         top: calc(var(--scroll-y) - 95px);
         max-width: 104%;
-        border-radius: 0;
         min-height: 100dvh;
-        border: none;
+        border-color: var(--background-color);
+        border-radius: 0;
     }
     
     .container .note-card.selected-card {
