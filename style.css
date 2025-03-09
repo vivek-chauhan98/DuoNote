@@ -1035,7 +1035,7 @@ body::-webkit-scrollbar-track{
         top: calc(var(--scroll-y) - 95px);
         max-width: 104%;
         border-radius: 0;
-        min-height: 100vh;
+        min-height: 90vh;
         border: none;
     }
     
