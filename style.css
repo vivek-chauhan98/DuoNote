@@ -226,7 +226,7 @@ body::-webkit-scrollbar-track{
     position: fixed;
     left: 0;
     top: 60px;
-    height: 100vh;
+    height: 100dvh;
     background-color: var(--background-color);
     z-index: 5;
 }
@@ -278,7 +278,7 @@ body::-webkit-scrollbar-track{
     gap: 8px;
     margin-top: 36px;
     margin-left: 9.5%;
-    min-height: 52vh;
+    min-height: 52dvh;
     max-width: fit-content;
     height: auto;
     padding-bottom: 190px;
@@ -652,7 +652,7 @@ body::-webkit-scrollbar-track{
 
 
 .container .selected-card .main-content{
-    max-height: 74vh;
+    max-height: 74dvh;
     padding-right: 4px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -686,7 +686,7 @@ body::-webkit-scrollbar-track{
 }
 
 .bg-img{
-    max-height: 50vh;
+    max-height: 50dvh;
     width: 116%;
     margin-left: -8%;
     margin-top: -2%;
@@ -1044,7 +1044,7 @@ body::-webkit-scrollbar-track{
     }
 
     .container .selected-card .main-content{
-        max-height: 90vh;
+        max-height: 90dvh;
     }
 }
 
