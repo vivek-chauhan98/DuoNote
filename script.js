@@ -1104,13 +1104,13 @@ searchBack.addEventListener('click', () => {
 
 
 window.addEventListener('resize', () => {
-    if (window.innerWidth > 543) {
+    if (window.innerWidth > 664) {
         navCenter.style.display = 'flex'
         navCenter.style.width = '47%'
         searchBack.style.display = 'none'
         searchIcon2.style.display = 'none'
 
-    } else if (window.innerWidth < 543) {
+    } else if (window.innerWidth < 664) {
         navCenter.style.display = 'none'
         navCenter.style.width = '75%'
         searchIcon.style.display = 'flex'
