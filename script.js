@@ -102,7 +102,7 @@ const toggleSidebar = () => {
 
     sideBar.style.boxShadow = isSideBarOpen ? 'none' : '10px 0px 12px -12px rgba(0, 0, 0, 0.5)'
 
-    if (window.innerWidth < 434) {
+    if (window.innerWidth < 664) {
         if (!isSideBarOpen) {
             sideBar.style.left = '0%'
         } else {
@@ -1104,13 +1104,13 @@ searchBack.addEventListener('click', () => {
 
 
 window.addEventListener('resize', () => {
-    if (window.innerWidth > 542) {
+    if (window.innerWidth > 543) {
         navCenter.style.display = 'flex'
         navCenter.style.width = '47%'
         searchBack.style.display = 'none'
         searchIcon2.style.display = 'none'
 
-    } else if (window.innerWidth < 542) {
+    } else if (window.innerWidth < 543) {
         navCenter.style.display = 'none'
         navCenter.style.width = '75%'
         searchIcon.style.display = 'flex'
@@ -1119,9 +1119,9 @@ window.addEventListener('resize', () => {
         logo.style.display = 'block'
     }
 
-    if (window.innerWidth > 434) {
+    if (window.innerWidth > 664) {        
         sideBar.style.left = '0%'
-    } else {
+    } else {        
         sideBar.style.left = '-20%'
         if (isSideBarOpen) sideBar.style.left = '0%'
     }
