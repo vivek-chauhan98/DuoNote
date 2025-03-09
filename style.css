@@ -1006,6 +1006,7 @@ body::-webkit-scrollbar-track{
     .deleted-card.selected-card .options,
     .reminder-card.selected-card .options{
         margin-bottom: 8px;
+        width: 60%;
     }
 
     .completed{
