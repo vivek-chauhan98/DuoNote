@@ -69,12 +69,12 @@ view.addEventListener('click', () => {
 // *************************************
 
 allElements.forEach(element => {
-        element.addEventListener('mouseenter', () => {
-            element.classList.add('bg-circle')
-        })
-        element.addEventListener('mouseleave', () => {
-            element.classList.remove('bg-circle')
-        })    
+    element.addEventListener('mouseenter', () => {
+        element.classList.add('bg-circle')
+    })
+    element.addEventListener('mouseleave', () => {
+        element.classList.remove('bg-circle')
+    })
 })
 
 let darkMode = JSON.parse(localStorage.getItem('darkMode')) || false
@@ -175,6 +175,7 @@ document.addEventListener('click', () => {
     isSideBarOpen = false
     removeSideBarBg()
 })
+
 
 
 // ************************************************************************
@@ -347,6 +348,7 @@ function addNewCard() {
 }
 addNewCard()
 
+
 function setupNoteCard() {
     const textBtn = document.querySelector('.txt-btn')
     const audioBtn = document.querySelector('.audio-btn')
@@ -369,7 +371,7 @@ function setupNoteCard() {
         remindCard.classList.remove('active')
         bgCard.classList.remove('active')
         e.stopPropagation()
-        toggleNoteInput(true, true, true, true, false, false)
+        toggleNoteInput(true, true, true, false, false)
     })
 
     audioBtn.addEventListener('click', (e) => {
@@ -377,10 +379,10 @@ function setupNoteCard() {
         remindCard.classList.remove('active')
         bgCard.classList.remove('active')
         e.stopPropagation()
-        toggleNoteInput(false, false, false, false, true, true)
+        toggleNoteInput(false, false, false, true, true)
     })
 
-    function toggleNoteInput(openContentBox, openDoneBtn, openClosebtn, isTextNote, openRcrdBtn, openClosebtn2) {
+    function toggleNoteInput(openContentBox, openDoneBtn, openClosebtn, openRcrdBtn, openClosebtn2) {
         buttonBox.style.display = 'none'
         title.style.display = 'block'
         newCardCopy.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.2)'
@@ -427,6 +429,9 @@ function setupNoteCard() {
 
     newCardCopy.onclick = (e) => {
         e.stopPropagation()
+        if (isSideBarOpen) toggleSidebar()
+        isSideBarOpen = false
+        removeSideBarBg()
     }
 
 
@@ -978,7 +983,7 @@ notesBar.onclick = () => {
     renderNotes()
     lastClickedBarClass = '.notes-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
-    if(window.innerWidth < 543) {
+    if (window.innerWidth < 543) {
         slideSideBarIn()
     }
 }
@@ -990,7 +995,7 @@ remindersBar.onclick = () => {
     lastClickedBarClass = '.reminders-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
     showAllReminders()
-    if(window.innerWidth < 543) {
+    if (window.innerWidth < 543) {
         slideSideBarIn()
     }
 }
@@ -1002,7 +1007,7 @@ archiveBar.onclick = () => {
     renderArchive()
     lastClickedBarClass = '.archive-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
-    if(window.innerWidth < 543) {
+    if (window.innerWidth < 543) {
         slideSideBarIn()
     }
 }
@@ -1014,7 +1019,7 @@ binBar.onclick = () => {
     renderDeleted()
     lastClickedBarClass = '.bin-bar'
     localStorage.setItem('lastClickedBarClass', JSON.stringify(lastClickedBarClass))
-    if(window.innerWidth < 543) {
+    if (window.innerWidth < 543) {
         slideSideBarIn()
     }
 }
@@ -1042,15 +1047,15 @@ searchClose.addEventListener('click', () => {
 searchInput.addEventListener('input', (e) => {
     searchCard = () => {
 
-        let inputValue = e.target.value
+        let inputValue = e.target.value        
         searchClose.classList.toggle('show', inputValue);
 
         //check for type of cards currently present in container
         let currentCards;
 
         container.children[0].className == 'note-card' ? currentCards = notes : container.children[0].className == 'archive-card' ? currentCards = archived : container.children[0].className == 'reminder-card' ? currentCards = reminders : currentCards = deleted
-
-        currentCards.forEach((card, index) => {
+   
+        currentCards.forEach((card, index) => {      
             if (card.content || card.title) {
                 let match = (card.content.toLowerCase()).includes(inputValue.toLowerCase()) || (card.title.toLowerCase()).includes(inputValue.toLowerCase())
                 if (match) {
@@ -1142,7 +1147,7 @@ function viewCard(index, cardType) {
     disableBgEl.classList.add('active')
     body.style.overflow = 'hidden'
 
-    
+
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`)
 
     completed.addEventListener('click', (e) => {
