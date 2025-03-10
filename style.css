@@ -702,7 +702,7 @@ body::-webkit-scrollbar-track{
     border: none;
     position: absolute;
     right: 1%;
-    bottom: 1%;
+    bottom: 4px;
     padding: 8px 12px;
     border-radius: 15px;
     cursor: pointer;
@@ -1024,14 +1024,10 @@ body::-webkit-scrollbar-track{
     .archive-card.selected-card .options,
     .deleted-card.selected-card .options,
     .reminder-card.selected-card .options{
-        margin-bottom: 12px;
+        margin-bottom: 4px;
         width: 60%;
         display: flex;
         opacity: 1;
-    }
-    
-    .completed{
-        bottom: 1.5%;
     }
     
     .nav-bar{
@@ -1080,6 +1076,10 @@ body::-webkit-scrollbar-track{
     .container .selected-card .main-content{
         max-height: 90dvh;
     }
+
+    .completed{
+        bottom: 16px;
+    }
 }
 
 @media (max-width: 415px) {
@@ -1105,7 +1105,6 @@ body::-webkit-scrollbar-track{
         max-height: 73dvh;
         min-height: 73dvh;
     }
-
 }
 
 @media (max-width: 392px) {
@@ -1113,16 +1112,20 @@ body::-webkit-scrollbar-track{
     .archive-card.selected-card .options, 
     .deleted-card.selected-card .options, 
     .reminder-card.selected-card .options{
-        margin-bottom: 16px;
-    }
-
-    .completed{
-        bottom: 2.2%;
+        margin-bottom: 20px;
     }
 
     .new-card .new-textarea{
         max-height: 72dvh;
         min-height: 72dvh;
+    }
+
+    .container .selected-card{
+        min-height: 101dvh;
+    }
+
+    .completed{
+        bottom: 20px;
     }
 }
 
@@ -1135,6 +1138,10 @@ body::-webkit-scrollbar-track{
     .new-card .new-textarea{
         max-height: 65dvh;
         min-height: 65dvh;
+    }
+
+    .completed{
+        bottom: 16px;
     }
 }
 
@@ -1159,5 +1166,9 @@ body::-webkit-scrollbar-track{
 
     .button-box{
         margin-left: 17%;
+    }
+
+    .completed{
+        bottom: 12px;
     }
 }
