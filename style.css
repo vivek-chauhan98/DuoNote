@@ -491,6 +491,7 @@ body::-webkit-scrollbar-track{
 
 .date-tag{
     margin-top: 16px;
+    margin-bottom: 4px;
     max-width: fit-content;
     border-radius: 12px;;
     padding: 2px 8px;
@@ -1029,14 +1030,14 @@ body::-webkit-scrollbar-track{
     .archive-card.selected-card .options,
     .deleted-card.selected-card .options,
     .reminder-card.selected-card .options{
-        margin-bottom: 12px;
+        margin-bottom: 20px;
         width: 60%;
         display: flex;
         opacity: 1;
     }
 
     .completed{
-        bottom: 12px;
+        bottom: 20px;
     }
     
     .nav-bar{
@@ -1136,7 +1137,7 @@ body::-webkit-scrollbar-track{
     .archive-card.selected-card .options, 
     .deleted-card.selected-card .options, 
     .reminder-card.selected-card .options{
-        margin-bottom: 20px;
+        margin-bottom: 24px;
     }
 
     .container .selected-card{
@@ -1144,7 +1145,7 @@ body::-webkit-scrollbar-track{
     }
 
     .completed{
-        bottom: 20px;
+        bottom: 24px;
     }
 }
 
@@ -1157,10 +1158,6 @@ body::-webkit-scrollbar-track{
 
     .container .selected-card .main-content{
         max-height: 87dvh;
-    }
-
-    .completed{
-        bottom: 16px;
     }
 }
 
@@ -1180,10 +1177,6 @@ body::-webkit-scrollbar-track{
 
     .button-box{
         margin-left: 17%;
-    }
-
-    .completed{
-        bottom: 12px;
     }
 
     .new-card .new-textarea {
