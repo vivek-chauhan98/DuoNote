@@ -177,7 +177,6 @@ document.addEventListener('click', () => {
 })
 
 
-
 // ************************************************************************
 
 let notes = JSON.parse(localStorage.getItem('notes')) || [];
