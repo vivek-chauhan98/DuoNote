@@ -850,6 +850,41 @@ const remind = (cardIndex, cardType, event) => {
 }
 
 
+function showNotification() {
+    let intervalId = setInterval(() => {
+        let now = new Date()
+        let currentDate = now.getDate()
+        let currentMonth = now.toLocaleString('en-IN', { month: 'short' })
+        let currentYear = now.getFullYear()
+        let currentHour = now.getHours()
+        let currentMinute = now.getMinutes()
+
+        reminders.forEach(card => {
+            if (card.remDetails.date == currentDate && 
+                card.remDetails.month == currentMonth && 
+                card.remDetails.year == currentYear && 
+                card.remDetails.hour == currentHour && 
+                card.remDetails.minute == currentMinute) {         
+                    alert(`${card.title} \n ${card.content}`)
+                    clearInterval(intervalId)
+                    nextNotification()
+            }   
+        })
+    }, 1000)
+}
+ 
+showNotification()
+
+function nextNotification() {
+    let now = new Date()
+    let remainingSeconds = 60 - now.getSeconds()
+
+    setTimeout(() => {
+        showNotification()
+    }, remainingSeconds * 1000);
+}
+
+
 body.addEventListener('click', () => {
     currentCardOptions?.classList.remove('show')
     remindCardOptions?.classList.remove('show')
@@ -1047,15 +1082,15 @@ searchClose.addEventListener('click', () => {
 searchInput.addEventListener('input', (e) => {
     searchCard = () => {
 
-        let inputValue = e.target.value        
+        let inputValue = e.target.value
         searchClose.classList.toggle('show', inputValue);
 
         //check for type of cards currently present in container
         let currentCards;
 
         container.children[0].className == 'note-card' ? currentCards = notes : container.children[0].className == 'archive-card' ? currentCards = archived : container.children[0].className == 'reminder-card' ? currentCards = reminders : currentCards = deleted
-   
-        currentCards.forEach((card, index) => {      
+
+        currentCards.forEach((card, index) => {
             if (card.content || card.title) {
                 let match = (card.content.toLowerCase()).includes(inputValue.toLowerCase()) || (card.title.toLowerCase()).includes(inputValue.toLowerCase())
                 if (match) {
@@ -1119,9 +1154,9 @@ window.addEventListener('resize', () => {
         logo.style.display = 'block'
     }
 
-    if (window.innerWidth > 664) {        
+    if (window.innerWidth > 664) {
         sideBar.style.left = '0%'
-    } else {        
+    } else {
         sideBar.style.left = '-20%'
         if (isSideBarOpen) sideBar.style.left = '0%'
     }
