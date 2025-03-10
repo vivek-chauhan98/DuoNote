@@ -1069,6 +1069,13 @@ body::-webkit-scrollbar-track{
         opacity: 0;
     }
 
+    .note-card.selected-card .options,
+    .archive-card.selected-card .options,
+    .deleted-card.selected-card .options,
+    .reminder-card.selected-card .options{
+        display: block;
+    }
+
     .button-box{
         width: 200px;
         display: flex;
