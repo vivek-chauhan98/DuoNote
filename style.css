@@ -490,7 +490,7 @@ body::-webkit-scrollbar-track{
 }
 
 .date-tag{
-    margin-top: 10px;
+    margin-top: 16px;
     max-width: fit-content;
     border-radius: 12px;;
     padding: 2px 8px;
@@ -1008,7 +1008,7 @@ body::-webkit-scrollbar-track{
     .container .archive-card.selected-card, 
     .container .deleted-card.selected-card, 
     .container .reminder-card.selected-card{
-        padding: 4px 16px 42px;
+        padding: 4px 16px 56px;
     }
 
     .note-card .options,
@@ -1023,7 +1023,7 @@ body::-webkit-scrollbar-track{
     .archive-card.selected-card .options,
     .deleted-card.selected-card .options,
     .reminder-card.selected-card .options{
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         width: 60%;
         display: flex;
         opacity: 1;
@@ -1087,22 +1087,58 @@ body::-webkit-scrollbar-track{
         margin-left: 22%;
     }
 
+    .bg-card .color{
+        height: 28px;
+        width: 28px;
+    }
+
     .container .note-card.selected-card {
         top: calc(var(--scroll-y) - 284px);
+    }
+
+    .new-card .new-textarea{
+        max-height: 74dvh;
+        min-height: 74dvh;
     }
 
 }
 
 @media (max-width: 392px) {
-    .bg-card .color{
-        height: 28px;
-        width: 28px;
+    .note-card.selected-card .options, 
+    .archive-card.selected-card .options, 
+    .deleted-card.selected-card .options, 
+    .reminder-card.selected-card .options{
+        margin-bottom: 16px;
+    }
+
+    .completed{
+        bottom: 2.2%;
+    }
+
+    .new-card .new-textarea{
+        max-height: 72dvh;
+        min-height: 72dvh;
     }
 }
 
+@media (max-width: 376px) {
+    
+    .container .selected-card .main-content{
+        max-height: 87dvh;
+    }
 
+    .new-card .new-textarea{
+        max-height: 65dvh;
+        min-height: 65dvh;
+    }
+}
 
 @media (max-width: 362px) {
+
+    .new-card .new-textarea{
+        max-height: 69dvh;
+        min-height: 69dvh;
+    }
 
     .container{
         gap: 4px;
