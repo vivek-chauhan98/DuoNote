@@ -1062,6 +1062,13 @@ body::-webkit-scrollbar-track{
 
 @media (max-width: 415px) {
 
+    .note-card .options,
+    .archive-card .options,
+    .deleted-card .options,
+    .reminder-card .options{
+        opacity: 0;
+    }
+
     .button-box{
         width: 200px;
         display: flex;
