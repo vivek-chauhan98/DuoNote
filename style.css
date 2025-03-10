@@ -1050,8 +1050,8 @@ body::-webkit-scrollbar-track{
     }
     
     .new-card .new-textarea{
-        min-height: 76dvh;
-        max-height: 76dvh;
+        min-height: 75dvh;
+        max-height: 75dvh;
     }
     
     .button-box{
@@ -1101,8 +1101,8 @@ body::-webkit-scrollbar-track{
     }
 
     .new-card .new-textarea{
-        max-height: 75dvh;
-        min-height: 75dvh;
+        max-height: 74dvh;
+        min-height: 74dvh;
     }
 
 }
@@ -1120,8 +1120,8 @@ body::-webkit-scrollbar-track{
     }
 
     .new-card .new-textarea{
-        max-height: 74dvh;
-        min-height: 74dvh;
+        max-height: 73dvh;
+        min-height: 73dvh;
     }
 }
 
@@ -1132,16 +1132,16 @@ body::-webkit-scrollbar-track{
     }
 
     .new-card .new-textarea{
-        max-height: 67dvh;
-        min-height: 67dvh;
+        max-height: 66dvh;
+        min-height: 66dvh;
     }
 }
 
 @media (max-width: 362px) {
 
     .new-card .new-textarea{
-        max-height: 70dvh;
-        min-height: 70dvh;
+        max-height: 69dvh;
+        min-height: 69dvh;
     }
 
     .container{
