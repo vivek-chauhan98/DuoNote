@@ -1062,7 +1062,7 @@ body::-webkit-scrollbar-track{
     
     .container .selected-card {
         top: calc(var(--scroll-y) - 95px);
-        max-width: 104%;
+        max-width: 102%;
         min-height: 100dvh;
         border-color: var(--background-color);
         border-radius: 0;
