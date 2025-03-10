@@ -329,7 +329,7 @@ function addNewCard() {
             <button class='audio-btn btn'>Audio Note</i></button>
         </div>
         <div>
-            <textarea type=""text class="new-textarea" placeholder="Take a note..."></textarea>
+            <textarea type="text" class="new-textarea" placeholder="Take a note..."></textarea>
             <div class="recording-controls">
                 <button class="start-recording btn">Start Recording</button>
                 <button class='close-2 btn'>Close</button>
@@ -355,6 +355,7 @@ function setupNoteCard() {
     const doneBtn = document.querySelector('.done')
     const closeBtn = document.querySelector('.close')
     const closeBtn2 = document.querySelector('.close-2')
+    const newCardEl = document.querySelector('.new-card')
     const contentBox = document.querySelector('.new-card .new-textarea')
     const title = document.querySelector('.new-title')
     const startRecording = document.querySelector('.start-recording')
@@ -371,6 +372,7 @@ function setupNoteCard() {
         bgCard.classList.remove('active')
         e.stopPropagation()
         toggleNoteInput(true, true, true, false, false)
+        newCardEl.classList.add('displace')
     })
 
     audioBtn.addEventListener('click', (e) => {
@@ -409,13 +411,17 @@ function setupNoteCard() {
         closeBtn.style.display = 'none'
         newCardCopy.style.boxShadow = 'none'
         title.style.display = 'none'
-        if (myTitle == '' && myContent == '') return
+        if (myTitle == '' && myContent == '') {
+            newCardEl.classList.remove('displace')
+            return
+        }
         notes.push({ 'title': myTitle, 'content': myContent, 'id': Date.now() })
         localStorage.setItem('notes', JSON.stringify(notes))
         renderNotes()
         title.value = ''
         contentBox.value = ''
         contentBox.style.height = '48px'
+        newCardEl.classList.remove('displace')
     })
 
     closeBtn.addEventListener('click', () => resetNewCard())
@@ -448,6 +454,7 @@ function setupNoteCard() {
         contentBox.style.height = '48px'
         closeBtn2.style.display = 'none'
         stopRecording.style.display = 'none'
+        newCardEl.classList.remove('displace')
     }
 
     startRecording.addEventListener('click', () => {
