@@ -648,7 +648,7 @@ const backGround = (index, cardType, event) => {
     let leftPosition = rect.left + window.scrollX - 90
     let topPosition = rect.bottom + window.scrollY
 
-    if (currentCard.classList.contains('selected-card')) topPosition = topPosition - 45
+    if (currentCard.classList.contains('selected-card')) topPosition = topPosition - 90
 
     let screenWidth = window.innerWidth
     let bgCardWidth = 440
