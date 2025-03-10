@@ -865,7 +865,7 @@ function showNotification() {
                 card.remDetails.year == currentYear && 
                 card.remDetails.hour == currentHour && 
                 card.remDetails.minute == currentMinute) {         
-                    alert(`${card.title} \n ${card.audioUrl? '' : card.content}`)
+                    alert(`${card.title} \n ${card.audioUrl? ' ' : card.content}`)
                     clearInterval(intervalId)
                     nextNotification()
             }   
