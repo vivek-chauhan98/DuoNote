@@ -1156,3 +1156,7 @@ body::-webkit-scrollbar-track{
         margin-left: 17%;
     }
 }
+
+.docWidth{
+    margin-left: 10%;
+}
