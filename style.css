@@ -974,8 +974,13 @@ body::-webkit-scrollbar-track{
     }
 
     .new-card{
-        margin-left: 15%;
+        margin-left: 9.3%;
         max-width: 81.5%;
+    }
+
+    .button-box{
+        margin-left: 6%;
+        width: 438px;
     }
 
 }
@@ -984,7 +989,7 @@ body::-webkit-scrollbar-track{
 
     .button-box{
         margin-left: 0%;
-        width: 330px;
+        width: 392px;
     }
     
     .side-bar .bar,
@@ -1055,7 +1060,7 @@ body::-webkit-scrollbar-track{
         position: absolute;
         z-index: 25;
         left: 0;
-        bottom: 0;
+        bottom: -4px;
         right: 0;
         top: 0;
         padding: 0;
@@ -1124,11 +1129,6 @@ body::-webkit-scrollbar-track{
     .container .note-card.selected-card {
         top: calc(var(--scroll-y) - 284px);
     }
-
-    .new-card .new-textarea{
-        max-height: 73dvh;
-        min-height: 73dvh;
-    }
 }
 
 @media (max-width: 392px) {
@@ -1137,11 +1137,6 @@ body::-webkit-scrollbar-track{
     .deleted-card.selected-card .options, 
     .reminder-card.selected-card .options{
         margin-bottom: 20px;
-    }
-
-    .new-card .new-textarea{
-        max-height: 72dvh;
-        min-height: 72dvh;
     }
 
     .container .selected-card{
@@ -1154,14 +1149,14 @@ body::-webkit-scrollbar-track{
 }
 
 @media (max-width: 376px) {
-    
-    .container .selected-card .main-content{
-        max-height: 87dvh;
+
+    .new-card .new-textarea {
+        min-height: 82dvh;
+        max-height: 82dvh;
     }
 
-    .new-card .new-textarea{
-        max-height: 65dvh;
-        min-height: 65dvh;
+    .container .selected-card .main-content{
+        max-height: 87dvh;
     }
 
     .completed{
@@ -1170,11 +1165,6 @@ body::-webkit-scrollbar-track{
 }
 
 @media (max-width: 362px) {
-
-    .new-card .new-textarea{
-        max-height: 68dvh;
-        min-height: 68dvh;
-    }
 
     .container{
         gap: 4px;
@@ -1195,4 +1185,18 @@ body::-webkit-scrollbar-track{
     .completed{
         bottom: 12px;
     }
+
+    .new-card .new-textarea {
+        min-height: 83dvh;
+        max-height: 83dvh;
+    }
+}
+
+@media (max-width: 362px) {
+
+    .new-card .new-textarea {
+        min-height: 86dvh;
+        max-height: 86dvh;
+    }
+
 }
