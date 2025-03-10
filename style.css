@@ -285,7 +285,8 @@ body::-webkit-scrollbar-track{
 }
 
 .container.flex-view{
-    margin-left: 30%;
+    margin-left: 24%;
+    max-width: 50%;
 }
 
 .flex-view{
@@ -828,7 +829,7 @@ body::-webkit-scrollbar-track{
     }
 
     .container.flex-view{
-        margin-left: 29%;
+        margin-left: 27.5%;
     }
 
     .button-box{
