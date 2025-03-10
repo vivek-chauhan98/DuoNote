@@ -337,8 +337,8 @@ function addNewCard() {
                 <button class="stop-recording btn">Stop Recording</button>
             </div>
             <div class="choice-btns">
-                <button class='done btn'>Done</button>
                 <button class='close btn'>Close</button>
+                <button class='done btn'>Done</button>
             </div>
         </div>
     </div>
