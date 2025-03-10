@@ -1117,7 +1117,6 @@ body::-webkit-scrollbar-track{
 }
 
 @media (max-width: 415px) {
-
     .button-box{
         width: 200px;
         display: flex;
@@ -1137,19 +1136,16 @@ body::-webkit-scrollbar-track{
 }
 
 @media (max-width: 392px) {
-
     .container .selected-card{
         min-height: 101dvh;
     }
 }
 
 @media (max-width: 376px) {
-
     .new-card .new-textarea {
         min-height: 79dvh;
         max-height: 79dvh;
     }
-
     .container .selected-card .main-content{
         max-height: 87dvh;
     }
@@ -1180,10 +1176,8 @@ body::-webkit-scrollbar-track{
 }
 
 @media (max-width: 362px) {
-
     .new-card .new-textarea {
         min-height: 83dvh;
         max-height: 83dvh;
     }
-
 }
