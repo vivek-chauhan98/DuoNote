@@ -1037,7 +1037,7 @@ body::-webkit-scrollbar-track{
     }
 
     .selected-card .date-tag{
-        margin-bottom: 16px;
+        margin-bottom: 8px;
     }
 
     .completed{
