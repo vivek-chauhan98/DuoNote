@@ -1030,15 +1030,18 @@ body::-webkit-scrollbar-track{
     .archive-card.selected-card .options,
     .deleted-card.selected-card .options,
     .reminder-card.selected-card .options{
-        margin-top: 16px;
         margin-bottom: 32px;
         width: 60%;
         display: flex;
         opacity: 1;
     }
 
+    .selected-card .date-tag{
+        margin-bottom: 16px;
+    }
+
     .completed{
-        bottom: 20px;
+        bottom: 32px;
     }
     
     .nav-bar{
