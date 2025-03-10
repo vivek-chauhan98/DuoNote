@@ -1066,7 +1066,7 @@ body::-webkit-scrollbar-track{
     .archive-card .options,
     .deleted-card .options,
     .reminder-card .options{
-        opacity: 0;
+        display: none;
     }
 
     .note-card.selected-card .options,
@@ -1096,6 +1096,8 @@ body::-webkit-scrollbar-track{
         width: 28px;
     }
 }
+
+
 
 @media (max-width: 362px) {
     
