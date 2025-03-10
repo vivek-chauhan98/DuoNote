@@ -615,6 +615,8 @@ const deletePermanent = (index) => {
     label.remove()
 }
 
+
+document.querySelector('.docWidth').innerHTML = window.innerWidth
 // ********************
 
 const bgCard = document.createElement('div')
