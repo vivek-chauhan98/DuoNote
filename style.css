@@ -973,7 +973,7 @@ body::-webkit-scrollbar-track{
     }
 
     .new-card{
-        margin-left: 12%;
+        margin-left: 15%;
         max-width: 81.5%;
     }
 
@@ -997,11 +997,26 @@ body::-webkit-scrollbar-track{
         background-color: var(--side-bar-active-clr);
     }
 
+    .container .note-card, 
+    .container .archive-card, 
+    .container .deleted-card, 
+    .container .reminder-card{
+        padding: 0px 6px 8px 8px;
+    }
+
+    .container .note-card.selected-card, 
+    .container .archive-card.selected-card, 
+    .container .deleted-card.selected-card, 
+    .container .reminder-card.selected-card{
+        padding: 4px 16px 42px;
+    }
+
     .note-card .options,
     .archive-card .options,
     .deleted-card .options,
     .reminder-card .options{
-        opacity: 1;
+        display: none;
+        opacity: 0;
     }
 
     .note-card.selected-card .options,
@@ -1010,6 +1025,8 @@ body::-webkit-scrollbar-track{
     .reminder-card.selected-card .options{
         margin-bottom: 8px;
         width: 60%;
+        display: flex;
+        opacity: 1;
     }
     
     .completed{
@@ -1062,20 +1079,6 @@ body::-webkit-scrollbar-track{
 
 @media (max-width: 415px) {
 
-    .note-card .options,
-    .archive-card .options,
-    .deleted-card .options,
-    .reminder-card .options{
-        display: none;
-    }
-
-    .note-card.selected-card .options,
-    .archive-card.selected-card .options,
-    .deleted-card.selected-card .options,
-    .reminder-card.selected-card .options{
-        display: block;
-    }
-
     .button-box{
         width: 200px;
         display: flex;
@@ -1100,6 +1103,10 @@ body::-webkit-scrollbar-track{
 
 
 @media (max-width: 362px) {
+
+    .container{
+        gap: 4px;
+    }
     
     .container .selected-card {
         top: calc(var(--scroll-y) - 107px);
