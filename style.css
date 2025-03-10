@@ -360,6 +360,7 @@ body::-webkit-scrollbar-track{
     max-height: 210px;
     min-height: 48px;
     color: var(--color-text);
+    white-space: pre-line;
 }
 
 .note-card .options,
