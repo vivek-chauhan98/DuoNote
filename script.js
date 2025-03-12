@@ -1158,10 +1158,7 @@ searchIcon.onclick = () => {
     searchCard()
 }
 
-searchInput.addEventListener("click", (event) => {
-    event.stopPropagation()
-});
-
+let searchIcon2Clicked = false
 searchIcon2.addEventListener('click', () => {
     navCenter.style.display = 'flex'
     navCenter.style.width = '90%'
@@ -1172,6 +1169,7 @@ searchIcon2.addEventListener('click', () => {
     logo.style.display = 'none'
     view.style.display = 'none'
     mode.style.display = 'none'
+    searchIcon2Clicked = true
     searchCard()
 })
 
@@ -1198,7 +1196,9 @@ window.addEventListener('resize', () => {
         searchIcon2.style.display = 'none'
 
     } else if (window.innerWidth < 664) {
-        navCenter.style.display = 'flex'
+        navCenter.style.display = 'none'
+        if(searchIcon2Clicked) navCenter.style.display = 'flex'
+        searchIcon2Clicked = false
         navCenter.style.width = '90%'
         searchIcon.style.display = 'flex'
         searchIcon2.style.display = 'flex'
