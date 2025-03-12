@@ -638,7 +638,7 @@ body::-webkit-scrollbar-track{
     z-index: 20;
     left: 50%;
     transform: translateX(-50%);
-    cursor: auto;
+    cursor: default;
     transition-duration: 0.3s;
     background-color: var(--background-color);
     padding: 4px 0px 42px 8px;
@@ -686,11 +686,34 @@ body::-webkit-scrollbar-track{
     width: 40%;
 }
 
+.img-container{
+    position: relative;
+}
+
 .bg-img{
     max-height: 50dvh;
     width: 116%;
     margin-left: -8%;
     margin-top: -2%;
+}
+
+.img-bin{
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2px 6px;
+    position: absolute;
+    bottom: 4px;
+    right: 2px;
+    cursor: pointer;
+    opacity: 0;
+    transition-duration: 0.2s;
+}
+
+.selected-card .img-container:hover .img-bin{
+    opacity: 1;
+} 
+
+.img-bin:hover{
+    background-color: black;
 }
 
 .selected-card .audio{
