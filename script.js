@@ -1179,6 +1179,7 @@ window.addEventListener('resize', () => {
 
 
 searchIcon2.addEventListener('click', () => {
+    document.querySelector('.checking').innerText = `height:, ${window.innerHeight}, Width:, ${window.innerWidth}`
     navCenter.style.display = 'flex'
     navCenter.style.width = '90%'
     searchIcon.style.display = 'none'
