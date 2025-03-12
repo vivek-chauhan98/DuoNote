@@ -182,7 +182,6 @@ document.addEventListener('click', () => {
 let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
 function renderNotes() {
-
     container.innerHTML = '';
     for (let index = notes.length - 1; index >= 0; index--) {
         const noteCard = document.createElement('div');
@@ -192,7 +191,10 @@ function renderNotes() {
         noteCard.innerHTML = `
         <div>
             <div class="main-content">
-                <img hidden class="bg-img" src="" onclick="viewCard(${index}, 'notes')" >
+                <p class="img-container">
+                    <img hidden class="bg-img" src="" onclick="viewCard(${index}, 'notes')">
+                    <i class="bi bi-trash3 img-bin" onclick="deleteimg(${index}, 'notes')"></i>
+                </p>
                 <textarea onclick="viewCard(${index}, 'notes')" contenteditable=true maxlength="110" class="title">${notes[index].title || 'Untitled'}</textarea>
                 <p onclick="viewCard(${index}, 'notes')" class="content" contenteditable='true'></p>
             </div>
@@ -215,10 +217,11 @@ function renderNotes() {
         applyBgColor(noteCard, notes[index].color)
         applyBgImg(noteCard, notes[index].imageUrl)
 
-        // Load saved note content
         let savedContent = notes[index].content
-        if (savedContent) {
-            noteCard.querySelector('.content').innerText = `${notes[index].content || `<audio class="audio" controls="true" src=data:audio/wav;base64,${notes[index].audioUrl}></audio>`}`;
+        if (savedContent) {            
+            noteCard.querySelector('.content').innerText = `${notes[index].content}`;
+        } else {
+            noteCard.querySelector('.content').innerHTML = `<audio class="audio" controls="true" src=data:audio/wav;base64,${notes[index].audioUrl}></audio>`
         }
     }
     renderOptions()
@@ -234,9 +237,12 @@ function renderArchive() {
         archiveCard.innerHTML = `
         <div>
             <div class="main-content">
-                <img hidden class="bg-img" src="" onclick="viewCard(${index}, 'archive')" >
+               <p class="img-container">
+                    <img hidden class="bg-img" src="" onclick="viewCard(${index}, 'archive')" >
+                    <i class="bi bi-trash3 img-bin" onclick="deleteimg(${index}, 'archive')"></i>
+                </p>
                 <textarea onclick="viewCard(${index} ,'archived')" contenteditable=true maxlength="110" class="title">${archived[index].title || 'Untitled'}</textarea>
-                <p onclick="viewCard(${index} ,'archived')" class="content" contenteditable='true' >${archived[index].content || `<audio class="audio" controls="true" src=data:audio/wav;base64,${archived[index].audioUrl}></audio>`}</p>
+                <p onclick="viewCard(${index} ,'archived')" class="content" contenteditable='true'></p>
             </div>
             <p class="date-tag"><i class="bi bi-clock clock"></i> ${archived[index].remDetails?.date} ${archived[index].remDetails?.month} ${archived[index].remDetails?.year}, ${archived[index].remDetails?.hour}:${archived[index].remDetails?.minute} <i class="bi bi-x cancel"></i></p>
             <button class="completed">Done</button>
@@ -256,6 +262,13 @@ function renderArchive() {
         checkReminders(index, 'archive')
         applyBgColor(archiveCard, archived[index].color)
         applyBgImg(archiveCard, archived[index].imageUrl)
+        
+        let savedContent = archived[index].content
+        if (savedContent) {            
+            archiveCard.querySelector('.content').innerText = `${archived[index].content}`;
+        } else {
+            archiveCard.querySelector('.content').innerHTML = `<audio class="audio" controls="true" src=data:audio/wav;base64,${archived[index].audioUrl}></audio>`
+        }
     }
     renderOptions()
 }
@@ -271,9 +284,12 @@ function showAllReminders() {
         reminderCard.innerHTML = `
         <div>
             <div class="main-content">
+             <p class="img-container">
                 <img hidden class="bg-img" src="" onclick="viewCard(${index}, 'reminders')" >
+                <i class="bi bi-trash3 img-bin" onclick="deleteimg(${index}, 'reminders')"></i>
+            </p>
                 <textarea onclick="viewCard(${index} ,'reminders')" contenteditable=true maxlength="110" class="title">${reminders[index].title || 'Untitled'}</textarea>
-                <p onclick="viewCard(${index} ,'reminders')" class="content" contenteditable='true' >${reminders[index].content || `<audio class="audio" controls="true" src=data:audio/wav;base64,${reminders[index].audioUrl}></audio>`}</p>
+                <p onclick="viewCard(${index} ,'reminders')" class="content" contenteditable='true'></p>
             </div>
             <p class="date-tag"><i class="bi bi-clock clock"></i> ${reminders[index].remDetails?.date} ${reminders[index].remDetails?.month} ${reminders[index].remDetails?.year}, ${reminders[index].remDetails?.hour}:${reminders[index].remDetails?.minute} <i class="bi bi-x cancel"></i></p>
             <button class="completed">Done</button>
@@ -292,6 +308,13 @@ function showAllReminders() {
         checkReminders(index, 'reminders')
         applyBgColor(reminderCard, reminders[index].color)
         applyBgImg(reminderCard, reminders[index].imageUrl)
+
+        let savedContent = reminders[index].content
+        if (savedContent) {            
+            reminderCard.querySelector('.content').innerText = `${reminders[index].content}`;
+        } else {
+            reminderCard.querySelector('.content').innerHTML = `<audio class="audio" controls="true" src=data:audio/wav;base64,${reminders[index].audioUrl}></audio>`
+        }
     }
     renderOptions()
 }
@@ -308,7 +331,7 @@ function renderDeleted() {
         <div>
             <img hidden class="bg-img" src="" onclick="viewCard(${index}, 'deleted')" >
             <textarea class="title">${deleted[index].title || 'Untitled'}</textarea>
-            <p class="content">${deleted[index].content || `<audio class="audio" controls="true" src=data:audio/wav;base64,${deleted[index].audioUrl}></audio>`}</p>
+            <p class="content"></p>
             <button class="completed">Done</button>
             <p class="options">
                 <i data-label="Delete forever" class="bi bi-x-circle" onclick="deletePermanent(${index})"></i>
@@ -319,6 +342,12 @@ function renderDeleted() {
         container.appendChild(deletedCard);
         applyBgColor(deletedCard, deleted[index].color)
         applyBgImg(deletedCard, deleted[index].imageUrl)
+        let savedContent = deleted[index].content
+        if (savedContent) {            
+            deletedCard.querySelector('.content').innerText = `${deleted[index].content}`;
+        } else {
+            deletedCard.querySelector('.content').innerHTML = `<audio class="audio" controls="true" src=data:audio/wav;base64,${deleted[index].audioUrl}></audio>`
+        }
     }
     renderOptions()
 }
@@ -964,6 +993,19 @@ function addImage(event) {
     }
 }
 
+function deleteimg(index, cardType) {
+    
+    let list;
+    cardType == 'notes' ? list = notes : cardType == 'reminders' ? list = reminders : list = archived
+    list[index].imageUrl = ''
+    
+    localStorage.setItem('notes', JSON.stringify(notes))
+    localStorage.setItem('archive', JSON.stringify(archived))
+    localStorage.setItem('reminders', JSON.stringify(reminders))
+
+    cardType == 'notes' ? renderNotes() : cardType == 'reminders' ? showAllReminders() : renderArchive()
+}
+
 
 function applyBgImg(card, imageUrl) {
     const bgImage = card.querySelector('.bg-img')
@@ -1223,11 +1265,13 @@ function viewCard(index, cardType) {
             updateCorrespondingCard(currentCards[index]);
             localStorage.setItem('reminders', JSON.stringify(currentCards))
             showAllReminders()
+            if(sameContent == true) return
         } else {
             localStorage.setItem('archive', JSON.stringify(currentCards))
             updateReminders()
             renderArchive()
-        }        
+            if(sameContent == true) return
+        } 
     })
 }
 
