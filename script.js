@@ -983,7 +983,7 @@ function addImage(event) {
         if (myCardType == 'reminders') applyCorrepondBgImg(addImgIndex, imageUrl)
         if (myCardType == 'archive') applyBgImgToRem(addImgIndex, imageUrl)
 
-   
+
         localStorage.setItem('notes', JSON.stringify(notes))
         localStorage.setItem('archive', JSON.stringify(archived))
         localStorage.setItem('reminders', JSON.stringify(reminders))
@@ -1158,8 +1158,9 @@ searchIcon.onclick = () => {
     searchCard()
 }
 
-let searchIcon2Clicked = false
+let isSearching = false
 searchIcon2.addEventListener('click', () => {
+    isSearching = true
     navCenter.style.display = 'flex'
     navCenter.style.width = '90%'
     searchIcon.style.display = 'none'
@@ -1169,7 +1170,6 @@ searchIcon2.addEventListener('click', () => {
     logo.style.display = 'none'
     view.style.display = 'none'
     mode.style.display = 'none'
-    searchIcon2Clicked = true
 })
 
 searchBack.addEventListener('click', () => {
@@ -1193,21 +1193,25 @@ window.addEventListener('resize', () => {
         navCenter.style.width = '47%'
         searchBack.style.display = 'none'
         searchIcon2.style.display = 'none'
+        sideBar.style.left = '0%'
 
     } else if (window.innerWidth < 664) {
-        navCenter.style.display = 'none'
-        if(searchIcon2Clicked) navCenter.style.display = 'flex'
-        searchIcon2Clicked = false
-        navCenter.style.width = '90%'
-        searchIcon.style.display = 'flex'
-        searchIcon2.style.display = 'flex'
-        appName.style.display = 'block'
-        logo.style.display = 'block'
-    }
-
-    if (window.innerWidth > 664) {
-        sideBar.style.left = '0%'
-    } else {
+        if (isSearching) {
+            navCenter.style.display = 'flex'
+            searchIcon2.style.display = 'none'
+            appName.style.display = 'none'
+            logo.style.display = 'none'
+            searchIcon.style.display = 'none'
+            searchBack.style.display = 'flex'
+        } else {
+            navCenter.style.display = 'none'
+            searchIcon2.style.display = 'flex'
+            appName.style.display = 'block'
+            logo.style.display = 'block'
+            searchIcon.style.display = 'flex'
+            searchBack.style.display = 'none'
+        }
+        navCenter.style.width = '90%'                
         sideBar.style.left = '-20%'
         if (isSideBarOpen) sideBar.style.left = '0%'
     }
