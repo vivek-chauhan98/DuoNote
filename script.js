@@ -1170,7 +1170,6 @@ searchIcon2.addEventListener('click', () => {
     view.style.display = 'none'
     mode.style.display = 'none'
     searchIcon2Clicked = true
-    searchCard()
 })
 
 searchBack.addEventListener('click', () => {
