@@ -1147,7 +1147,7 @@ body::-webkit-scrollbar-track{
         max-height: 79dvh;
     }
     .container .selected-card .main-content{
-        max-height: 87dvh;
+        max-height: 85dvh;
     }
 }
 
@@ -1172,12 +1172,5 @@ body::-webkit-scrollbar-track{
     .new-card .new-textarea {
         min-height: 80dvh;
         max-height: 80dvh;
-    }
-}
-
-@media (max-width: 362px) {
-    .new-card .new-textarea {
-        min-height: 83dvh;
-        max-height: 83dvh;
     }
 }
