@@ -1165,6 +1165,18 @@ searchInput.addEventListener('keypress', (e) => {
     }
 })
 
+searchInput.addEventListener('focus', () => {
+    document.querySelector('.checking').innerText = 'search input focused'
+})
+
+searchInput.addEventListener('blur', () => {
+     'search input blur'
+})
+
+window.addEventListener('resize', () => {
+    document.querySelector('.checking').innerText = `Window resized. New height:, ${window.innerHeight}`
+})
+
 
 searchIcon2.addEventListener('click', () => {
     navCenter.style.display = 'flex'
