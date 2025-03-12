@@ -1159,20 +1159,6 @@ searchIcon.onclick = () => {
     searchCard()
 }
 
-searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        searchInput.blur();
-    }
-})
-
-searchInput.addEventListener('focus', () => {
-    document.querySelector('.checking').innerText = 'search input focused'
-})
-
-searchInput.addEventListener('blur', () => {
-     document.querySelector('.checking').innerText = 'search input blur'
-})
-
 searchIcon2.addEventListener('click', () => {
     navCenter.style.display = 'flex'
     navCenter.style.width = '90%'
