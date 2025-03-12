@@ -1264,17 +1264,14 @@ function viewCard(index, cardType) {
             localStorage.setItem('notes', JSON.stringify(currentCards))
             updateReminders()
             renderNotes()
-            if(sameContent == true) return
         } else if (cardType == 'reminders') {
             updateCorrespondingCard(currentCards[index]);
             localStorage.setItem('reminders', JSON.stringify(currentCards))
             showAllReminders()
-            if(sameContent == true) return
         } else {
             localStorage.setItem('archive', JSON.stringify(currentCards))
             updateReminders()
             renderArchive()
-            if(sameContent == true) return
         } 
     })
 }
