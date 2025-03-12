@@ -1133,7 +1133,6 @@ searchClose.addEventListener('click', () => {
 
 searchInput.addEventListener('input', (e) => {
     searchCard = () => {
-
         let inputValue = e.target.value
         searchClose.classList.toggle('show', inputValue);
 
@@ -1169,6 +1168,7 @@ searchIcon2.addEventListener('click', () => {
     logo.style.display = 'none'
     view.style.display = 'none'
     mode.style.display = 'none'
+    searchCard()
 })
 
 searchBack.addEventListener('click', () => {
