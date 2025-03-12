@@ -1073,7 +1073,7 @@ body::-webkit-scrollbar-track{
     .container .deleted-card .options{
         display: flex;
         opacity: 1;
-        width: 60%;
+        width: 100%;
     }
 }
 
