@@ -194,7 +194,7 @@ function renderNotes() {
             <div class="main-content">
                 <img hidden class="bg-img" src="" onclick="viewCard(${index}, 'notes')" >
                 <textarea onclick="viewCard(${index}, 'notes')" contenteditable=true maxlength="110" class="title">${notes[index].title || 'Untitled'}</textarea>
-                <p onclick="viewCard(${index}, 'notes')" class="content" contenteditable='true' >${notes[index].content || `<audio class="audio" controls="true" src=data:audio/wav;base64,${notes[index].audioUrl}></audio>`}</p>
+                <p onclick="viewCard(${index}, 'notes')" class="content" contenteditable='true'></p>
             </div>
             <p class="date-tag"><i class="bi bi-clock clock"></i> ${notes[index].remDetails?.date} ${notes[index].remDetails?.month} ${notes[index].remDetails?.year}, ${notes[index].remDetails?.hour}:${notes[index].remDetails?.minute} <i class="bi bi-x cancel"></i></p>
             <button class="completed">Done</button>
@@ -214,6 +214,12 @@ function renderNotes() {
         checkReminders(index, 'notes')
         applyBgColor(noteCard, notes[index].color)
         applyBgImg(noteCard, notes[index].imageUrl)
+
+        // Load saved note content
+        let savedContent = notes[index].content
+        if (savedContent) {
+            noteCard.querySelector('.content').innerText = `${notes[index].content || `<audio class="audio" controls="true" src=data:audio/wav;base64,${notes[index].audioUrl}></audio>`}`;
+        }
     }
     renderOptions()
 }
@@ -1172,11 +1178,14 @@ window.addEventListener('resize', () => {
 // **********************
 
 function viewCard(index, cardType) {
+    let sameContent = false
     let currentCards;
-
     cardType == 'notes' ? currentCards = notes : cardType == 'reminders' ? currentCards = reminders : currentCards = archived
 
     const selectedCard = container.children[currentCards.length - index - 1]
+
+    if(selectedCard.classList.contains('selected-card')) sameContent = true
+
     selectedCard.classList.add('selected-card')
 
     const completed = selectedCard.querySelector('.completed')
@@ -1188,10 +1197,9 @@ function viewCard(index, cardType) {
     disableBgEl.classList.add('active')
     body.style.overflow = 'hidden'
 
-
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`)
 
-    completed.addEventListener('click', (e) => {
+    completed.addEventListener('click', (e) => {        
         e.stopPropagation();
         remindCardOptions?.classList.remove('show')
         remindCard.classList.remove('active')
@@ -1203,11 +1211,14 @@ function viewCard(index, cardType) {
         selectedCard.classList.remove('selected-card')
         currentCards[index].title = newTitle.value
         currentCards[index].content = newContent.innerText
+        
+        if(sameContent == true) return
 
         if (cardType == 'notes') {
             localStorage.setItem('notes', JSON.stringify(currentCards))
             updateReminders()
             renderNotes()
+            if(sameContent == true) return
         } else if (cardType == 'reminders') {
             updateCorrespondingCard(currentCards[index]);
             localStorage.setItem('reminders', JSON.stringify(currentCards))
@@ -1216,7 +1227,7 @@ function viewCard(index, cardType) {
             localStorage.setItem('archive', JSON.stringify(currentCards))
             updateReminders()
             renderArchive()
-        }
+        }        
     })
 }
 
