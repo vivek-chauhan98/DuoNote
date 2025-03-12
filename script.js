@@ -1174,7 +1174,7 @@ searchInput.addEventListener('blur', () => {
 })
 
 window.addEventListener('resize', () => {
-    document.querySelector('.checking').innerText = `Window resized. New height:, ${window.innerHeight}`
+    document.querySelector('.checking').innerText = `New Width:, ${window.innerWidth}`
 })
 
 
