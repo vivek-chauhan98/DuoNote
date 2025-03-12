@@ -1176,6 +1176,10 @@ searchIcon2.addEventListener('click', () => {
     logo.style.display = 'none'
     view.style.display = 'none'
     mode.style.display = 'none'
+
+    setTimeout(() => {
+        searchInput.focus();
+    }, 10000);
 })
 
 searchBack.addEventListener('click', () => {
