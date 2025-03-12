@@ -193,7 +193,7 @@ function renderNotes() {
             <div class="main-content">
                 <p class="img-container">
                     <img hidden class="bg-img" src="" onclick="viewCard(${index}, 'notes')">
-                    <i class="bi bi-trash3 img-bin" onclick="deleteimg(${index}, 'notes')"></i>
+                    <i class="bi bi-trash3 img-bin" onclick="deleteImg(${index}, 'notes')"></i>
                 </p>
                 <textarea onclick="viewCard(${index}, 'notes')" contenteditable=true maxlength="110" class="title">${notes[index].title || 'Untitled'}</textarea>
                 <p onclick="viewCard(${index}, 'notes')" class="content" contenteditable='true'></p>
@@ -218,7 +218,7 @@ function renderNotes() {
         applyBgImg(noteCard, notes[index].imageUrl)
 
         let savedContent = notes[index].content
-        if (savedContent) {            
+        if (savedContent) {
             noteCard.querySelector('.content').innerText = `${notes[index].content}`;
         } else {
             noteCard.querySelector('.content').innerHTML = `<audio class="audio" controls="true" src=data:audio/wav;base64,${notes[index].audioUrl}></audio>`
@@ -239,7 +239,7 @@ function renderArchive() {
             <div class="main-content">
                <p class="img-container">
                     <img hidden class="bg-img" src="" onclick="viewCard(${index}, 'archive')" >
-                    <i class="bi bi-trash3 img-bin" onclick="deleteimg(${index}, 'archive')"></i>
+                    <i class="bi bi-trash3 img-bin" onclick="deleteImg(${index}, 'archive')"></i>
                 </p>
                 <textarea onclick="viewCard(${index} ,'archived')" contenteditable=true maxlength="110" class="title">${archived[index].title || 'Untitled'}</textarea>
                 <p onclick="viewCard(${index} ,'archived')" class="content" contenteditable='true'></p>
@@ -262,9 +262,9 @@ function renderArchive() {
         checkReminders(index, 'archive')
         applyBgColor(archiveCard, archived[index].color)
         applyBgImg(archiveCard, archived[index].imageUrl)
-        
+
         let savedContent = archived[index].content
-        if (savedContent) {            
+        if (savedContent) {
             archiveCard.querySelector('.content').innerText = `${archived[index].content}`;
         } else {
             archiveCard.querySelector('.content').innerHTML = `<audio class="audio" controls="true" src=data:audio/wav;base64,${archived[index].audioUrl}></audio>`
@@ -286,7 +286,7 @@ function showAllReminders() {
             <div class="main-content">
              <p class="img-container">
                 <img hidden class="bg-img" src="" onclick="viewCard(${index}, 'reminders')" >
-                <i class="bi bi-trash3 img-bin" onclick="deleteimg(${index}, 'reminders')"></i>
+                <i class="bi bi-trash3 img-bin" onclick="deleteImg(${index}, 'reminders')"></i>
             </p>
                 <textarea onclick="viewCard(${index} ,'reminders')" contenteditable=true maxlength="110" class="title">${reminders[index].title || 'Untitled'}</textarea>
                 <p onclick="viewCard(${index} ,'reminders')" class="content" contenteditable='true'></p>
@@ -310,7 +310,7 @@ function showAllReminders() {
         applyBgImg(reminderCard, reminders[index].imageUrl)
 
         let savedContent = reminders[index].content
-        if (savedContent) {            
+        if (savedContent) {
             reminderCard.querySelector('.content').innerText = `${reminders[index].content}`;
         } else {
             reminderCard.querySelector('.content').innerHTML = `<audio class="audio" controls="true" src=data:audio/wav;base64,${reminders[index].audioUrl}></audio>`
@@ -343,7 +343,7 @@ function renderDeleted() {
         applyBgColor(deletedCard, deleted[index].color)
         applyBgImg(deletedCard, deleted[index].imageUrl)
         let savedContent = deleted[index].content
-        if (savedContent) {            
+        if (savedContent) {
             deletedCard.querySelector('.content').innerText = `${deleted[index].content}`;
         } else {
             deletedCard.querySelector('.content').innerHTML = `<audio class="audio" controls="true" src=data:audio/wav;base64,${deleted[index].audioUrl}></audio>`
@@ -901,19 +901,19 @@ function showNotification() {
         let currentMinute = now.getMinutes()
 
         reminders.forEach(card => {
-            if (card.remDetails.date == currentDate && 
-                card.remDetails.month == currentMonth && 
-                card.remDetails.year == currentYear && 
-                card.remDetails.hour == currentHour && 
-                card.remDetails.minute == currentMinute) {         
-                    alert(`${card.title} \n ${card.audioUrl? 'Audio note' : card.content}`)
-                    clearInterval(intervalId)
-                    nextNotification()
-            }   
+            if (card.remDetails.date == currentDate &&
+                card.remDetails.month == currentMonth &&
+                card.remDetails.year == currentYear &&
+                card.remDetails.hour == currentHour &&
+                card.remDetails.minute == currentMinute) {
+                alert(`${card.title} \n ${card.audioUrl ? 'Audio note' : card.content}`)
+                clearInterval(intervalId)
+                nextNotification()
+            }
         })
     }, 1000)
 }
- 
+
 showNotification()
 
 function nextNotification() {
@@ -973,9 +973,7 @@ function getInfo(index, cardType) {
 
 function addImage(event) {
     let file = event.target.files[0]
-
     let reader = new FileReader()
-
     reader.readAsDataURL(file)
 
     reader.onload = () => {
@@ -985,6 +983,7 @@ function addImage(event) {
         if (myCardType == 'reminders') applyCorrepondBgImg(addImgIndex, imageUrl)
         if (myCardType == 'archive') applyBgImgToRem(addImgIndex, imageUrl)
 
+   
         localStorage.setItem('notes', JSON.stringify(notes))
         localStorage.setItem('archive', JSON.stringify(archived))
         localStorage.setItem('reminders', JSON.stringify(reminders))
@@ -993,12 +992,11 @@ function addImage(event) {
     }
 }
 
-function deleteimg(index, cardType) {
-    
+function deleteImg(index, cardType) {
     let list;
     cardType == 'notes' ? list = notes : cardType == 'reminders' ? list = reminders : list = archived
     list[index].imageUrl = ''
-    
+
     localStorage.setItem('notes', JSON.stringify(notes))
     localStorage.setItem('archive', JSON.stringify(archived))
     localStorage.setItem('reminders', JSON.stringify(reminders))
@@ -1139,7 +1137,6 @@ searchInput.addEventListener('input', (e) => {
         let inputValue = e.target.value
         searchClose.classList.toggle('show', inputValue);
 
-        //check for type of cards currently present in container
         let currentCards;
 
         container.children[0].className == 'note-card' ? currentCards = notes : container.children[0].className == 'archive-card' ? currentCards = archived : container.children[0].className == 'reminder-card' ? currentCards = reminders : currentCards = deleted
@@ -1222,15 +1219,15 @@ window.addEventListener('resize', () => {
 
 
 // **********************
+let sameContent = false
 
 function viewCard(index, cardType) {
-    let sameContent = false
     let currentCards;
     cardType == 'notes' ? currentCards = notes : cardType == 'reminders' ? currentCards = reminders : currentCards = archived
 
     const selectedCard = container.children[currentCards.length - index - 1]
 
-    if(selectedCard.classList.contains('selected-card')) sameContent = true
+    if (selectedCard.classList.contains('selected-card')) sameContent = true
 
     selectedCard.classList.add('selected-card')
 
@@ -1245,7 +1242,7 @@ function viewCard(index, cardType) {
 
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`)
 
-    completed.addEventListener('click', (e) => {        
+    completed.addEventListener('click', (e) => {
         e.stopPropagation();
         remindCardOptions?.classList.remove('show')
         remindCard.classList.remove('active')
@@ -1257,8 +1254,8 @@ function viewCard(index, cardType) {
         selectedCard.classList.remove('selected-card')
         currentCards[index].title = newTitle.value
         currentCards[index].content = newContent.innerText
-        
-        if(sameContent == true) return
+
+        if (sameContent == true) return
 
         if (cardType == 'notes') {
             localStorage.setItem('notes', JSON.stringify(currentCards))
@@ -1272,7 +1269,7 @@ function viewCard(index, cardType) {
             localStorage.setItem('archive', JSON.stringify(currentCards))
             updateReminders()
             renderArchive()
-        } 
+        }
     })
 }
 
