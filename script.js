@@ -1198,7 +1198,7 @@ window.addEventListener('resize', () => {
         searchIcon2.style.display = 'none'
 
     } else if (window.innerWidth < 664) {
-        navCenter.style.display = 'none'
+        navCenter.style.display = 'flex'
         navCenter.style.width = '90%'
         searchIcon.style.display = 'flex'
         searchIcon2.style.display = 'flex'
