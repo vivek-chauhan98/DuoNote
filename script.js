@@ -1158,6 +1158,10 @@ searchIcon.onclick = () => {
     searchCard()
 }
 
+searchInput.addEventListener("click", (event) => {
+    event.stopPropagation()
+});
+
 searchIcon2.addEventListener('click', () => {
     navCenter.style.display = 'flex'
     navCenter.style.width = '90%'
