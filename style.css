@@ -1069,6 +1069,11 @@ body::-webkit-scrollbar-track{
     .nav-bar{
         padding-inline: 0;
     }
+
+    .container .deleted-card .options{
+        display: flex;
+        opacity: 1;
+    }
 }
 
 @media (max-width: 434px) {
