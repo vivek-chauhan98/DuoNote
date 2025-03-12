@@ -1171,12 +1171,14 @@ searchInput.addEventListener('keypress', (e) => {
 
 searchIcon2.addEventListener('click', () => {
     navCenter.style.display = 'flex'
-    navCenter.style.width = '75%'
+    navCenter.style.width = '90%'
     searchIcon.style.display = 'none'
     searchBack.style.display = 'flex'
     searchIcon2.style.display = 'none'
     appName.style.display = 'none'
     logo.style.display = 'none'
+    view.style.display = 'none'
+    mode.style.display = 'none'
 })
 
 searchBack.addEventListener('click', () => {
@@ -1188,6 +1190,8 @@ searchBack.addEventListener('click', () => {
     appName.style.display = 'block'
     logo.style.display = 'block'
     searchInput.value = ''
+    view.style.display = 'flex'
+    mode.style.display = 'flex'
     searchCard()
 })
 
