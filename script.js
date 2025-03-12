@@ -1170,16 +1170,10 @@ searchInput.addEventListener('focus', () => {
 })
 
 searchInput.addEventListener('blur', () => {
-     'search input blur'
+     document.querySelector('.checking').innerText = 'search input blur'
 })
-
-window.addEventListener('resize', () => {
-    document.querySelector('.checking').innerText = `New Width:, ${window.innerWidth}`
-})
-
 
 searchIcon2.addEventListener('click', () => {
-    document.querySelector('.checking').innerText = `height:, ${window.innerHeight}, Width:, ${window.innerWidth}`
     navCenter.style.display = 'flex'
     navCenter.style.width = '90%'
     searchIcon.style.display = 'none'
