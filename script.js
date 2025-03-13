@@ -358,7 +358,7 @@ function addNewCard() {
     newCard.classList.add('new-card')
     newCard.innerHTML = `
     <div>
-        <textarea class='new-title' hidden maxlength="110" placeholder="Untitled"></textarea>
+        <textarea class='new-title title' hidden maxlength="110" placeholder="Untitled"></textarea>
         <div class="button-box">
             <button class='txt-btn btn'>Text Note</button>
             <button class='audio-btn btn'>Audio Note</i></button>
@@ -408,6 +408,7 @@ function setupNoteCard() {
         e.stopPropagation()
         toggleNoteInput(true, true, true, false, false)
         newCardEl.classList.add('displace')
+        stopNextLine()
     })
 
     audioBtn.addEventListener('click', (e) => {
@@ -1141,7 +1142,8 @@ searchInput.addEventListener('input', (e) => {
         container.children[0].className == 'note-card' ? currentCards = notes : container.children[0].className == 'archive-card' ? currentCards = archived : container.children[0].className == 'reminder-card' ? currentCards = reminders : currentCards = deleted
 
         currentCards.forEach((card, index) => {
-            if (card.content || card.title) {
+
+            if (card.title || card.content) {
                 let match = (card.content.toLowerCase()).includes(inputValue.toLowerCase()) || (card.title.toLowerCase()).includes(inputValue.toLowerCase())
                 if (match) {
                     container.children[currentCards.length - index - 1].style.display = 'block'
@@ -1212,12 +1214,23 @@ window.addEventListener('resize', () => {
             searchIcon.style.display = 'flex'
             searchBack.style.display = 'none'
         }
-        navCenter.style.width = '90%'                
+        navCenter.style.width = '90%'
         sideBar.style.left = '-20%'
         if (isSideBarOpen) sideBar.style.left = '0%'
     }
 })
 
+// ********************
+
+function stopNextLine() {
+const allCardTitles = document.querySelectorAll('.title')
+allCardTitles.forEach(title => {
+    title.addEventListener('keydown', (e) => {
+        if (e.key == 'Enter') {
+            e.preventDefault()
+        }
+    })
+})}
 
 // **********************
 let sameContent = false
@@ -1225,10 +1238,11 @@ let sameContent = false
 function viewCard(index, cardType) {
     let currentCards;
     cardType == 'notes' ? currentCards = notes : cardType == 'reminders' ? currentCards = reminders : currentCards = archived
-
+    
     const selectedCard = container.children[currentCards.length - index - 1]
-
+    
     if (selectedCard.classList.contains('selected-card')) sameContent = true
+    stopNextLine()
 
     selectedCard.classList.add('selected-card')
 
