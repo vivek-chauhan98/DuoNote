@@ -1173,6 +1173,7 @@ searchIcon2.addEventListener('click', () => {
 })
 
 searchBack.addEventListener('click', () => {
+    isSearching = false
     navCenter.style.display = 'none'
     navCenter.style.width = '47%'
     searchIcon.style.display = 'flex'
